@@ -11,21 +11,62 @@
     <title>Pinnacle</title>
 </head>
 <body>
+ <?php 
+  require_once "../lib/dbConnect.php";
+  require_once "../lib/deck.php";
+ ?>
     <div class="container text-center pt-5" >
         <div class="row justify-content-center pt-5">
             <div class="col-md-5">
                 <h2 class="text-info">Welcome to Pinnacle Game!</h2>
-                <form action="log.php" method="get">
+                <form action="login.php" method="get">
                     <div class="form-group">
                         <label class="mt-4 mb-4">Login</label>
-                            <h5  id="error" class="error text-danger text-opacity-50 bg-danger bg-opacity-25 rounded"><?php echo $_GET['helloooo'];?></h5>                   
-                        <input placeholder="username" id="input" type="text" name="user" class="form-control mt-4 ">
-                        <input placeholder="username" id="input" type="text" name="user2" class="form-control mt-4 ">
+                            <h5  id="error" class="error text-danger text-opacity-50 bg-danger bg-opacity-25 rounded"><?php echo $_GET['ERROR'];?></h5>                   
+                        <input placeholder="Enter Username" id="input" type="text" name="user" class="form-control mt-4 ">
                     </div>
                     <button type="submit" name="sumbit" class="btn btn-primary mt-4">Login</button>
                 </form>
             </div>
         </div>
     </div>
+    <?php   
+    /* $method = $_SERVER['REQUEST_METHOD'];
+    $request = explode('/', trim($_SERVER['PATH_INFO'],'/'));
+     
+    $input = json_decode(file_get_contents('php://input'),true);
+
+   
+    switch ($r=array_shift($request)) {
+        case 'deck' : 
+        switch ($b=array_shift($request)) {
+            case '':
+            case null: handle_deck($method);
+            break;
+            case 'piece': // handle_piece($method, $request[0],$request[1],$input);
+                        break;
+            case 'player': // handle_player($method, $request[0],$input);
+                        break;
+            default: header("HTTP/1.1 404 Not Found");
+                    break;
+        }
+        break;
+        default: 	
+        header("HTTP/1.1 404 Not Found");
+        exit;
+    }
+    function handle_deck($method){
+        if($method=='GET'){
+            show_deck();
+        }
+        else if($method=='POST'){
+            reset_deck();
+        }
+        else{
+            header('HTTP/1.1405 Method Not Allowed');
+        }
+    }
+    */
+    ?> 
 </body>
 </html>
