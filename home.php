@@ -18,7 +18,6 @@
                 <form action="log.php" method="get">
                     <div class="form-group">
                         <label class="mt-4 mb-4">Login</label>
-                            <h5  id="error" class="error text-danger text-opacity-50 bg-danger bg-opacity-25 rounded"><?php echo $_GET['error'];?></h5>
                         <input placeholder="username" id="input" type="text" name="user" class="form-control mt-4 ">
                         <input placeholder="username" id="input" type="text" name="user2" class="form-control mt-4 ">
                     </div>
