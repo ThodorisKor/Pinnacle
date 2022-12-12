@@ -16,6 +16,7 @@
  <?php 
   require_once "../lib/dbConnect.php";
   require_once "../lib/deck.php";
+   
  ?>
     <div class="container text-center pt-5" >
         <div class="row justify-content-center pt-5">
@@ -32,6 +33,7 @@
             </div>
         </div>
     </div>
+     
     <?php   
     /* $method = $_SERVER['REQUEST_METHOD'];
     $request = explode('/', trim($_SERVER['PATH_INFO'],'/'));
