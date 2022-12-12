@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- CSS only -->
     <!--bootstrap link-->
-    <link  rel="stylesheet" type="text/css" href="main2.css">
+    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-    <script src="../lib/scripts.js"></script>
+    <script src="script.js"></script>
     <title>Pinnacle</title>
     
 </head>
@@ -16,7 +16,6 @@
  <?php 
   require_once "../lib/dbConnect.php";
   require_once "../lib/deck.php";
-   
  ?>
     <div class="container text-center pt-5" >
         <div class="row justify-content-center pt-5">
