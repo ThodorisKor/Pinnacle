@@ -14,7 +14,7 @@ function show_deck(){
 function reset_deck(){
     global $mysqli;
 
-    $sql = 'call clean_deck()';
+    $sql = 'call moirasma_xartiwn()';
     $mysqli->query($sql);
     show_deck();
 }

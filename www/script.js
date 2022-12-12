@@ -1,7 +1,7 @@
 function check() {
     var a= document.getElementById("input");
     if(a.value.length == 0)
-        alert("Empty username")  ;
+        alert("Empty username not allowed!")  ;
     else
-        alert("GOOD");
+        alert("User Added Successfully!");
 }
