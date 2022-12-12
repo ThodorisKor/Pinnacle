@@ -2,7 +2,7 @@
     $name= "";
         $name = $_GET['user'];
         if(empty($name)){
-            header("Location: home.php?error=User Name is required");
+            echo '<script>alert("Empty username")</script>';
         }else{
             //db connection 
             //add the user into the database 
