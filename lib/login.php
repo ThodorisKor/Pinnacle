@@ -5,7 +5,7 @@
                
                echo '<div class="container"> 
                <div class="alert text-center alert-danger alert-dismissible fade show">
-                  <button type="button" class="close" data-dismiss="alert">&times;</button>
+                  <button type="button" class="btn-close bg-danger bg-opacity-25" data-dismiss="alert"></button>
                   <strong>ERROR!</strong> Empty fields not allowed!
                </div>
             </div>';   
@@ -25,7 +25,7 @@
 
                echo '<div class="container"> 
                <div class="alert text-center alert-success alert-dismissible fade show">
-                  <button type="button" class="close" data-dismiss="alert">&times;</button>
+                  <button type="button" class="btn-close bg-success bg-opacity-25" data-dismiss="alert"></button>
                   <strong>Success!</strong> User Added!
                </div>
             </div>';   
