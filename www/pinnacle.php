@@ -12,8 +12,11 @@
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.1/dist/jquery.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
- 
+    <script src="script.js"></script>
     <title>Pinnacle</title>
+ <script>
+    $("#head").prepend("blablabla");
+ </script>
 </head>
 <body>
  <?php 
@@ -25,7 +28,7 @@
     <div class="container text-center pt-5" >
         <div class="row justify-content-center pt-5">
             <div class="col-md-5">
-                <h2 class="text-info">Welcome to Pinnacle Game!</h2>
+                <h2 id="head" class="text-info">Welcome to Pinnacle Game!</h2>
                 <form method="get">
                     <div class="form-group">
                         <label class="mt-4 mb-4">Login</label>
@@ -33,7 +36,7 @@
                         <input placeholder="Enter Username" id="input" type="text" name="user" class="form-control mt-4 ">                     
                     </div>
                     <!-- AN PATISW TO KOUMPI THA EKTELESTHEI O KWDIKAS TOU login.php -->
-                    <button type="submit" name="sumbit" class="btn btn-primary mt-4">Login</button>
+                    <button type="submit" id="submit" name="sumbit" class="btn btn-primary mt-4">Login</button>
                 </form>
             </div>
         </div>
