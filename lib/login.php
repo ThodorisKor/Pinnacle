@@ -11,7 +11,7 @@
             </div>';   
             }
             else{
-            $sql = "insert into players(username,id,token,`last action`) values (?,,null,null)";
+            $sql = "insert into players(username,id,token,`last action`) values (?,?,null,null)";
             
                /* Prepared statement, stage 1: prepare */
                $stmt = $mysqli->prepare("INSERT into players(username,id) values (?,?)");

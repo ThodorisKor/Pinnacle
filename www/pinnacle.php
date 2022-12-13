@@ -14,10 +14,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
  
     <title>Pinnacle</title>
-<script>
-    var a= document.$("input");
-    a.sette
-</script>
 </head>
 <body>
  <?php 
