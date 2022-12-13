@@ -4,7 +4,7 @@
             if(empty($_GET['user'])){
                
                echo '<div class="container"> 
-               <div class="alert alert-danger alert-dismissible fade show">
+               <div class="alert text-center alert-danger alert-dismissible fade show">
                   <button type="button" class="close" data-dismiss="alert">&times;</button>
                   <strong>ERROR!</strong> Empty fields not allowed!
                </div>
@@ -24,7 +24,7 @@
                $stmt->execute(); 
 
                echo '<div class="container"> 
-               <div class="alert alert-success alert-dismissible fade show">
+               <div class="alert text-center alert-success alert-dismissible fade show">
                   <button type="button" class="close" data-dismiss="alert">&times;</button>
                   <strong>Success!</strong> User Added!
                </div>
