@@ -5,7 +5,6 @@ function onclick(){
 }
 
 function action(){
- alert("mphke sthn action");
     $.ajax(
          {
             url: "requests.php/login/",
@@ -17,11 +16,6 @@ function check_count(data){
    for(var i=0;i<data.length;i++){
       var o = data[i];
       $id = o.count;
-   }
+   }   
+   document.cookie = "count =" + $id;
 } 
-     
-    
-      
- 
-      
-    
