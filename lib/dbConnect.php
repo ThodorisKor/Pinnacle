@@ -1,3 +1,4 @@
+ 
 <?php
 $host='localhost';
 $db = 'pinnacle';
@@ -12,6 +13,7 @@ if(gethostname()=='users.iee.ihu.gr') {
 } else {
         $mysqli = new mysqli($host, $user, $pass, $db);
         
+         
    
 }
 

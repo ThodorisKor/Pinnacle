@@ -1,16 +1,29 @@
- /* paradeigma function me jquery
-$(document).ready(onclick);
+   
+  $(document).ready(onclick);
 
- function onclick(){
-    $("#submit").click(action)
- }
+function onclick(){
+   $("#submit").click(action)
+}
 function action(){
-    if($('#input').val())
-        alert("User Added Successfully!");     
-    else
-        alert("Empty username not allowed!")  ;
-     }    
+ alert("mphke sthn action");
+    $.ajax(
+         {
+            url: "requests.php/login/",
+            success: check_count
+         } 
+      );
+     }
+      function check_count(data){
+         for(var i=0;i<data.length;i++){
+            var o = data[i];
+            $id = o.count;
+            alert("blsbla");
+             
+         }
+      } 
+     
     
-       */
+      
  
- 
+      
+    

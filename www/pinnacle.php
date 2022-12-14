@@ -20,9 +20,8 @@
  <?php 
   require_once "../lib/dbConnect.php";
   require_once "../lib/login.php"; 
-  require_once "../lib/game_status.php"; 
 ?>
- 
+ <div id="alert">
     <div class="container text-center pt-5" >
         <div class="row justify-content-center pt-5">
             <div class="col-md-5">
@@ -40,7 +39,7 @@
         </div>
     </div>
 
-   
+</div>
  
   
   

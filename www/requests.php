@@ -1,7 +1,9 @@
 <?php
     require_once "../lib/dbConnect.php";
-    require_once "../lib/deck.php";
     require_once "../lib/game_status.php";
+    require_once "../lib/deck.php";
+    require_once "../lib/player_count.php";
+    
     $method = $_SERVER['REQUEST_METHOD'];
     $request = explode('/', trim($_SERVER['PATH_INFO'],'/'));
      
@@ -21,10 +23,19 @@
             default: header("HTTP/1.1 404 Not Found");
                     break;
         }
- // 68-74 kainouries grammes 
+ // 68-43 kainouries grammes 
+        break;
         case 'status':
             if(sizeof($request)==0){
                 handle_status($method);
+            }
+            else{
+                header("HTTP/1.1 404 Not Found");
+            }
+        break;
+        case 'login':
+            if(sizeof($request)==0){
+                handle_count($method);
             }
             else{
                 header("HTTP/1.1 404 Not Found");
@@ -54,5 +65,13 @@
             header('HTTP/1.1 405 Method Not Allowed');
         }
     }
-    
+    //new function
+    function handle_count($method){
+        if($method=='GET'){
+            player_count();
+        }
+        else{
+            header('HTTP/1.1 405 Method Not Allowed');
+        }
+    }
     ?> 

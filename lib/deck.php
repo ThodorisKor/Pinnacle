@@ -1,6 +1,6 @@
 <?php 
 function show_deck(){
-    global $mysqli;
+     global $mysqli;
 
     $sql = 'select * from deck';
     $st = $mysqli -> prepare($sql);
@@ -10,6 +10,8 @@ function show_deck(){
 
     header('Content-type: application/json');
     print json_encode($res->fetch_all(MYSQLI_ASSOC),JSON_PRETTY_PRINT);
+     
+    
 }
 function reset_deck(){
     global $mysqli;
