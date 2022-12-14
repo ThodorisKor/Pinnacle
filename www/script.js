@@ -1,9 +1,9 @@
-   
-  $(document).ready(onclick);
+$(document).ready(onclick);
 
 function onclick(){
    $("#submit").click(action)
 }
+
 function action(){
  alert("mphke sthn action");
     $.ajax(
@@ -13,14 +13,12 @@ function action(){
          } 
       );
      }
-      function check_count(data){
-         for(var i=0;i<data.length;i++){
-            var o = data[i];
-            $id = o.count;
-            alert("blsbla");
-             
-         }
-      } 
+function check_count(data){
+   for(var i=0;i<data.length;i++){
+      var o = data[i];
+      $id = o.count;
+   }
+} 
      
     
       
