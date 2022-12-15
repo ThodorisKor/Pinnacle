@@ -25,6 +25,28 @@
         }
         $username = $input['username'];
         global $mysqli;
-        $sql = 'select count(*) as count from players where id =?';
+        $sql = 'select count(*) as count from players where id =? and username is not null';
+        $st = $mysqli -> prepare($sql);
+        $st ->bind_param('i',$b);
+        $st -> execute();
+        $res = $st -> get_result();
+        $r = $res -> fetch_all(MYSQLI_ASSOC);
+        if($r[0]['count'] >0){
+            header("HTTP/1.1 400 Bad Request");
+            print json_encode(['errormesg'=>"Player $b is already set.Please select another player id."]);
+            exit;
+        }
+        $sql = 'update players set username=?, token=md5(CONCAT(?, NOW())) where id = ?';
+        $st2 = $mysqli ->prepare($sql);
+        $st2 -> bind_param('ssi',$username,$username,$b);
+        $st2 -> execute();
+        //update_game_status();
+        $sql = 'select * from players where id=?';
+        $st = $mysqli->prepare($sql);
+        $st -> bind_param('i',$b);
+        $st -> execute();
+        $res = $st ->get_result();
+        header('Content-type: application/json');
+        print json_encode($res -> fetch_all(MYSQLI_ASSOC), JSON_PRETTY_PRINT);
     }
 ?>

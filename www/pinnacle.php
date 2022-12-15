@@ -7,7 +7,6 @@
     
     $method = $_SERVER['REQUEST_METHOD'];
     $request = explode('/', trim($_SERVER['PATH_INFO'],'/'));
-     
     $input = json_decode(file_get_contents('php://input'),true);
 
    
@@ -25,7 +24,9 @@
         }
         break;
 
-        case 'player': handle_player($method, $request[0],$input);
+        case 'player': 
+            handle_player($method, $request,$input);
+        
             break;
 
         case 'status':
@@ -81,6 +82,7 @@
         }
     }
     function handle_player($method,$p,$input){
+       // $b = $p;
         switch ($b=array_shift($p)){
             case '1':
             case '2':
