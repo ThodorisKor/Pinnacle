@@ -1,11 +1,9 @@
-$(document).ready(onclick);
 var me={};
 var game_status={};
 
-function onclick(){
-   $("#submit").click(action)
 $( function(){
    $('#login').click(login_to_game);
+   $("#submit").click(action);
 });
  
 
@@ -34,7 +32,6 @@ function login_to_game(){
    
 }
 
-<<<<<<< Updated upstream
 function action(){
     $.ajax(
          {
@@ -55,8 +52,8 @@ function deck_handle(){
    //url ajax 
    //succes go to other function store the variables 
    //remove all the content , and make a new content with a array for player 1 and player 2 , button ama to pataei dinei xarti
-}}
-=======
+}
+
 function login_result(data){
    me = data[0];
    status_info();
@@ -101,4 +98,3 @@ function login_error(data,y,z,c){
        
 }
  
->>>>>>> Stashed changes
