@@ -3,7 +3,7 @@ var game_status={};
 
 $( function(){
    $('#login').click(login_to_game);
-   $("#submit").click(action);
+   $("#start").click(action);
 });
  
 
@@ -34,19 +34,25 @@ function login_to_game(){
 }
 
 function action(){
+   var p_id=$("#id").val();
     $.ajax(
          {
-            url: "requests.php/login/",
-            success: check_count
+            url: "pinnacle.php/deck/player " + p_id,
+            method: 'GET',
+            dataType: "json",
+            contentType: 'application/json',            
+            success: show_deck
          } 
       );
      }
-function check_count(data){
+function show_deck(data){
    for(var i=0;i<data.length;i++){
       var o = data[i];
-      $id = o.count;
+      var number = o.number;
+      var shape = o. shape;
+      var card = "<option>" + number + " " + shape + "</option>";
+      $('#cards').html(card);
    }   
-   document.cookie = "count =" + $id;
 } 
 
 function deck_handle(){
