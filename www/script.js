@@ -19,3 +19,9 @@ function check_count(data){
    }   
    document.cookie = "count =" + $id;
 } 
+
+function deck_handle(){
+   //url ajax 
+   //succes go to other function store the variables 
+   //remove all the content , and make a new content with a array for player 1 and player 2 , button ama to pataei dinei xarti
+}
