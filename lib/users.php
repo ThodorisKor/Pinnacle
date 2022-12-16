@@ -1,4 +1,5 @@
 <?php
+ require_once "game.php";
     function handle_user($method,$b,$input){
         if($method=='GET')
             show_user($b);
@@ -40,7 +41,9 @@
         $st2 = $mysqli ->prepare($sql);
         $st2 -> bind_param('ssi',$username,$username,$b);
         $st2 -> execute();
-        //update_game_status();
+
+        update_game_status();
+
         $sql = 'select * from players where id=?';
         $st = $mysqli->prepare($sql);
         $st -> bind_param('i',$b);

@@ -1,8 +1,7 @@
 <?php
     require_once "../lib/dbConnect.php";
-    require_once "../lib/game_status.php";
+    require_once "../lib/game.php";
     require_once "../lib/deck.php";
-    require_once "../lib/player_count.php";
     require_once "../lib/users.php";
     
     $method = $_SERVER['REQUEST_METHOD'];
@@ -82,7 +81,6 @@
         }
     }
     function handle_player($method,$p,$input){
-       // $b = $p;
         switch ($b=array_shift($p)){
             case '1':
             case '2':
