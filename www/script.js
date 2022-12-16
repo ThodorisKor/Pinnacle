@@ -9,13 +9,14 @@ $( function(){
 
 function login_to_game(){
    if($("#username").val()==''){
-     document.getElementById("alert").innerHTML+=
+      alert("ERROR!Empty fields not allowed!");
+     /* document.getElementById("alert").innerHTML+=
                    '<div class="container">'+
                        '<div class="alert text-center alert-danger alert-dismissible fade show">'+
                             '<button type="button" class="btn-close bg-danger bg-opacity-25" data-dismiss="alert"></button>'+
                              '<strong>ERROR!</strong> Empty fields not allowed!'+
                          '</div>'+
-                   '</div>';
+                   '</div>'; */
      return;
    }
    
@@ -57,8 +58,7 @@ function deck_handle(){
 function login_result(data){
    me = data[0];
    status_info();
-   
-   //den douleuoun ta alert gia kapoio logo
+  
    alert("User Added!");
    //bootstrap alert parakatw
    /*
@@ -86,7 +86,7 @@ function update_info(){
 }
 function login_error(data,y,z,c){
    var x= data.responseJSON;
-   //alert(x.errormesg);
+   alert(x.errormesg);
    //bootstrap alert parakatw
      /* document.getElementById("alert").innerHTML+=
                      '<div class="container">'+
