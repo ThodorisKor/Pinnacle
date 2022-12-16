@@ -11,6 +11,8 @@ $( function(){
    });
    $("#cards").hide();
    $("#start").click(function(){
+      $("#head").hide();
+      $(".hide").hide();
       $("#cards").show();
       //$("#login").hide();
    }) ; 
@@ -61,6 +63,8 @@ function show_deck(data){
       var o = data[i];
       var number = o.number;
       var shape = o. shape;
+      var node = document.createElement("option");
+      var textnode = document.createTextNode(number +"");
        
       //$('#cards').html(card);
       document.getElementById("cards").innerHTML+="<option>" + number + " " + shape + "</option>";
