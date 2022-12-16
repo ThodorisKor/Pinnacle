@@ -1,9 +1,22 @@
 var me={};
 var game_status={};
-
+var i=0;
 $( function(){
    $('#login').click(login_to_game);
-   $("#start").click(action);
+   //Gia thn emfanish xartiwn
+    action();
+    $("#id").change(function(){
+      document.getElementById("cards").innerHTML="";
+      action();
+   });
+   $("#cards").hide();
+   $("#start").click(function(){
+      $("#cards").show();
+      //$("#login").hide();
+   }) ; 
+     
+    
+        
 });
  
 
@@ -21,6 +34,7 @@ function login_to_game(){
    }
    
    var p_id=$("#id").val();
+   
    $.ajax({
       url: "pinnacle.php/player/"+p_id,
       method: 'PUT',
@@ -37,10 +51,7 @@ function action(){
    var p_id=$("#id").val();
     $.ajax(
          {
-            url: "pinnacle.php/deck/player " + p_id,
-            method: 'GET',
-            dataType: "json",
-            contentType: 'application/json',            
+            url: "pinnacle.php/deck/player "+p_id,
             success: show_deck
          } 
       );
@@ -50,8 +61,9 @@ function show_deck(data){
       var o = data[i];
       var number = o.number;
       var shape = o. shape;
-      var card = "<option>" + number + " " + shape + "</option>";
-      $('#cards').html(card);
+       
+      //$('#cards').html(card);
+      document.getElementById("cards").innerHTML+="<option>" + number + " " + shape + "</option>";
    }   
 } 
 
@@ -86,6 +98,7 @@ function status_info(){
 function get_status(data){
    game_status = data[0];
    update_info();
+    
 }
 function update_info(){
    $('#game_info').html("I am Player: "+me.id+", my name is: "+me.username+"<br>Token: "+me.token+"<br>Game state: "+game_status.status+", " +game_status.p_turn+" must play now.");

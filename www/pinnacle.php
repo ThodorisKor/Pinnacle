@@ -42,9 +42,9 @@
         exit;
     }
 // FUNCTIONS
-    function handle_deck($method,$request){
+    function handle_deck($method,$b){
         if($method=='GET'){
-            get_player_cards($request);
+            get_player_cards($b);
         }
         else if($method=='POST'){
             reset_deck();

@@ -21,12 +21,11 @@ function reset_deck(){
     show_deck();
 }
 
-function get_player_cards($request){
-    print_r($request);
+function get_player_cards($b){
     global $mysqli;
     $sql = 'select number,shape from deck where location=?';
     $st = $mysqli -> prepare($sql);
-    $st -> bind_param('s',$request);
+    $st -> bind_param('s',$b);
     $st -> execute();
     $res = $st -> get_result();
     header('Content-type: application/json');
