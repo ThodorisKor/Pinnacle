@@ -1,6 +1,7 @@
 var me={};
 var game_status={};
 $( function(){
+   $('#start').prop('disabled', true);
    $('#center_card').hide()
    $.ajax(
       {
@@ -95,6 +96,7 @@ function deck_handle(){
 
 function login_result(data){
    alert("User Added!");
+   $('#start').prop('disabled', false);
    me = data[0]; 
    update_info();
    game_status_update();
