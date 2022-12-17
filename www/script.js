@@ -1,6 +1,5 @@
 var me={};
 var game_status={};
-var i=0;
 $( function(){
    $('#login').click(login_to_game);
    //Gia thn emfanish xartiwn
@@ -11,10 +10,11 @@ $( function(){
    });
    $("#cards").hide();
    $("#start").click(function(){
-      $("#head").hide();
-      $(".hide").hide();
-      $("#cards").show();
+      $("#head").hide(1000);
+      $(".hide").hide(1000);
+      $("#cards").show(1000);
       //$("#login").hide();
+       
    }) ; 
      
     
@@ -78,10 +78,12 @@ function deck_handle(){
 }
 
 function login_result(data){
-   me = data[0];
-   status_info();
-  
    alert("User Added!");
+   me = data[0]; 
+   update_info();
+   game_status_update();
+  
+   
    //bootstrap alert parakatw
    /*
    document.getElementById("alert").innerHTML+=
@@ -93,17 +95,8 @@ function login_result(data){
                    '</div>'; 
    */
 }
-function status_info(){
-   $.ajax({
-      url: "pinnacle.php/status",
-      success: get_status
-   });
-}
-function get_status(data){
-   game_status = data[0];
-   update_info();
-    
-}
+ 
+ 
 function update_info(){
    $('#game_info').html("I am Player: "+me.id+", my name is: "+me.username+"<br>Token: "+me.token+"<br>Game state: "+game_status.status+", " +game_status.p_turn+" must play now.");
 }
@@ -119,5 +112,24 @@ function login_error(data,y,z,c){
                          '</div>'+
                      '</div>'; */
        
+}
+function game_status_update(){
+   $.ajax({url: "pinnacle.php/status/", success: update_status});
+}
+
+function update_status(data){
+   game_status= data[0];
+   update_info();
+    if(game_status.p_turn==me.p_id && me.p_id!=null){
+      x=0;
+      // do play
+      $("#move_div").show(1000);
+      setTimeout(function(){ game_status_update();}, 15000);
+    }
+    else{
+      // must wait for something
+      $("#move_div").hide(1000);
+      setTimeout(function(){ game_status_update();}, 4000);
+    }
 }
  
