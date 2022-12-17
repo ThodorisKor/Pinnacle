@@ -30,7 +30,7 @@
 
         case 'center':
             if(sizeof($request)==0){
-                handle_center(); 
+                handle_center($method); 
             }
             else{
                 header("HTTP/1.1 404 Not Found");
@@ -82,7 +82,7 @@
                 break;
         }
     }
-    function handle_center(){
+    function handle_center($method){
         if($method=='GET'){
             center_cards();
         }

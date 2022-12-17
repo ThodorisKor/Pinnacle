@@ -1,6 +1,14 @@
 var me={};
 var game_status={};
 $( function(){
+   $('#center_card').hide()
+   $.ajax(
+      {
+         url: "pinnacle.php/deck",
+         method: "POST",
+         success: center_cards
+      }
+   )
    $('#login').click(login_to_game);
    //Gia thn emfanish xartiwn
     action();
@@ -11,6 +19,7 @@ $( function(){
    $("#cards").hide();
    $('#play_card').hide();
    $("#start").click(function(){
+      deck_handle();
       document.getElementById("started").classList.add('fixed-bottom');
       document.getElementById("started").classList.add('mb-5');
       $('#game_info').hide();
@@ -19,6 +28,7 @@ $( function(){
       $("#head").hide(1000);
       $(".hide").hide(1000);
       $("#cards").show(1000);
+      $('#center_card').show(1000);    
       //$("#login").hide();
    }) ; 
 });
@@ -76,6 +86,7 @@ function deck_handle(){
    //url ajax 
    //succes go to other function store the variables 
    //show the center card on the page
+  
 }
 
 function login_result(data){
@@ -101,18 +112,26 @@ function login_result(data){
 function update_info(){
    $('#game_info').html("<p>" + "I am Player: "+me.id+", my name is: "+me.username+"<br>Token: "+me.token+"<br>Game state: "+game_status.status+", " +game_status.p_turn+" must play now." + "</p>");
    //fixing this and adding a button to play a card
+   
+}
 
-   if(game_status=='started'){
-      //bla bla
-      //call the fucking moirasma xartiwn mesa apo post
-      //call the fucking function center_cards , mesa stin fucntion kalese to center card
-      $.ajax(
-         {
-            url: "",
-            success: other_func()
-         } 
-      );
+function center_cards(){
+   $.ajax(
+      {
+         url: "pinnacle.php/center",
+         success: get_center_card
+      }
+   );
+}
+function get_center_card(data){
+   var number;
+   var shape;
+   for (var i = 0; i < data.length; i++) {
+      number = data[i].number;
+      shape = data[i].shape;
    }
+   $('#center_card').html("<h6>" + number + " " + shape + "</h6>");
+   document.getElementById("center_card").classList.add('bg-info');
 }
 function login_error(data,y,z,c){
    var x= data.responseJSON;

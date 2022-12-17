@@ -1,5 +1,6 @@
 <?php 
 function show_status(){
+    update_game_status();
     global $mysqli;
 
     $sql = 'select * from game_status';
@@ -63,10 +64,17 @@ function update_game_status(){
     //prepare statement gia na kalw kai na ektelw tin center_card , kai epeidi den emfanizei ara den epistrefei kati h center_card,
     //tha kalw pali ena statement to opoio tha to emfanizei , like reset_Deck and show_Deck from deck.php
     //select shape,number from deck where location='center'
-function show_center_card(){
-    global $mysqli;
+    function center_cards(){
+        global $mysqli;
 
-    $sql = 'select shape,number from deck where location='center'';
+        $sql = 'call center_card()';
+        $mysqli->query($sql);
+        show_center_card();
+    }
+function show_center_card(){
+    
+    global $mysqli;
+    $sql = 'select shape,number from deck where location="center"';
     $st = $mysqli -> prepare($sql);
 
     $st -> execute();
