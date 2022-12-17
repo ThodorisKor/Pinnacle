@@ -28,9 +28,9 @@
             }
         break;
 
-        case 'count':
+        case 'center':
             if(sizeof($request)==0){
-                handle_count($method);
+                handle_center(); 
             }
             else{
                 header("HTTP/1.1 404 Not Found");
@@ -80,6 +80,11 @@
             default: header("HTTP/1.1 404 Not Found");
                      print json_encode(['errormesg'=>"Player $b not found."]);
                 break;
+        }
+    }
+    function handle_center(){
+        if($method=='GET'){
+            center_cards();
         }
     }
     ?> 
