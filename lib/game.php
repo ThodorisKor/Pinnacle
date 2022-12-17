@@ -60,9 +60,19 @@ function update_game_status(){
     $st -> execute();
 }
 
-function center_cards(){
     //prepare statement gia na kalw kai na ektelw tin center_card , kai epeidi den emfanizei ara den epistrefei kati h center_card,
     //tha kalw pali ena statement to opoio tha to emfanizei , like reset_Deck and show_Deck from deck.php
     //select shape,number from deck where location='center'
+function show_center_card(){
+    global $mysqli;
+
+    $sql = 'select shape,number from deck where location='center'';
+    $st = $mysqli -> prepare($sql);
+
+    $st -> execute();
+    $res = $st -> get_result();
+
+    header('Content-type: application/json');
+    print json_encode($res->fetch_all(MYSQLI_ASSOC),JSON_PRETTY_PRINT);
 }
 ?>

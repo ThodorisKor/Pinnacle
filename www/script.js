@@ -9,7 +9,13 @@ $( function(){
       action();
    });
    $("#cards").hide();
+   $('#play_card').hide();
    $("#start").click(function(){
+      document.getElementById("started").classList.add('fixed-bottom');
+      document.getElementById("started").classList.add('mb-5');
+      $('#game_info').hide();
+      $('#game_info').show(1000);
+      $('#play_card').show(1000);
       $("#head").hide(1000);
       $(".hide").hide(1000);
       $("#cards").show(1000);
@@ -61,16 +67,15 @@ function show_deck(data){
       var shape = o. shape;
       var node = document.createElement("option");
       var textnode = document.createTextNode(number +"");
-       
-      //$('#cards').html(card);
-      document.getElementById("cards").innerHTML+="<option>" + number + " " + shape + "</option>";
+      $('#cards').append("<option>" + number + " " + shape + "</option>");
+      //document.getElementById("cards").innerHTML+="<option>" + number + " " + shape + "</option>";
    }   
 } 
 
 function deck_handle(){
    //url ajax 
    //succes go to other function store the variables 
-   //remove all the content , and make a new content with a array for player 1 and player 2 , button ama to pataei dinei xarti
+   //show the center card on the page
 }
 
 function login_result(data){
@@ -94,12 +99,19 @@ function login_result(data){
  
  
 function update_info(){
-   $('#game_info').html("I am Player: "+me.id+", my name is: "+me.username+"<br>Token: "+me.token+"<br>Game state: "+game_status.status+", " +game_status.p_turn+" must play now.");
+   $('#game_info').html("<p>" + "I am Player: "+me.id+", my name is: "+me.username+"<br>Token: "+me.token+"<br>Game state: "+game_status.status+", " +game_status.p_turn+" must play now." + "</p>");
    //fixing this and adding a button to play a card
+
    if(game_status=='started'){
       //bla bla
       //call the fucking moirasma xartiwn mesa apo post
       //call the fucking function center_cards , mesa stin fucntion kalese to center card
+      $.ajax(
+         {
+            url: "",
+            success: other_func()
+         } 
+      );
    }
 }
 function login_error(data,y,z,c){
