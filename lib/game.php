@@ -59,4 +59,10 @@ function update_game_status(){
     $st -> bind_param('ss',$new_status,$new_turn);
     $st -> execute();
 }
+
+function center_cards(){
+    //prepare statement gia na kalw kai na ektelw tin center_card , kai epeidi den emfanizei ara den epistrefei kati h center_card,
+    //tha kalw pali ena statement to opoio tha to emfanizei , like reset_Deck and show_Deck from deck.php
+    //select shape,number from deck where location='center'
+}
 ?>

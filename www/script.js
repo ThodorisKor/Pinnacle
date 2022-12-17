@@ -14,11 +14,7 @@ $( function(){
       $(".hide").hide(1000);
       $("#cards").show(1000);
       //$("#login").hide();
-       
    }) ; 
-     
-    
-        
 });
  
 
@@ -99,6 +95,12 @@ function login_result(data){
  
 function update_info(){
    $('#game_info').html("I am Player: "+me.id+", my name is: "+me.username+"<br>Token: "+me.token+"<br>Game state: "+game_status.status+", " +game_status.p_turn+" must play now.");
+   //fixing this and adding a button to play a card
+   if(game_status=='started'){
+      //bla bla
+      //call the fucking moirasma xartiwn mesa apo post
+      //call the fucking function center_cards , mesa stin fucntion kalese to center card
+   }
 }
 function login_error(data,y,z,c){
    var x= data.responseJSON;
