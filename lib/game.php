@@ -1,8 +1,8 @@
 <?php 
 function show_status(){
-    update_game_status();
+    
     global $mysqli;
-
+ 
     $sql = 'select * from game_status';
     $st = $mysqli -> prepare($sql);
 

@@ -16,8 +16,11 @@ $( function(){
       document.getElementById("cards").innerHTML="";
       action();
    });
+
    $("#cards").hide();
    $('#play_card').hide();
+   $("#combination_div").hide();
+
    $("#start").click(function(){
       deck_handle();
       document.getElementById("started").classList.add('fixed-bottom');
@@ -27,6 +30,7 @@ $( function(){
       $('#play_card').show(1000);
       $("#head").hide(1000);
       $(".hide").hide(1000);
+      $("#combination_div").show(1000);
       $("#cards").show(1000);
       $('#center_card').show(1000);    
       //$("#login").hide();
@@ -153,16 +157,16 @@ function game_status_update(){
 function update_status(data){
    game_status= data[0];
    update_info();
-    if(game_status.p_turn==me.p_id && me.p_id!=null){
+    if(game_status.p_turn=="player "+me.id && me.id!=null){
       x=0;
       // do play
-      $("#move_div").show(1000);
-      setTimeout(function(){ game_status_update();}, 15000);
+      $("#combination_div").show(1000);
+      setTimeout(function(){ game_status_update();}, 10000);
     }
     else{
       // must wait for something
-      $("#move_div").hide(1000);
-      setTimeout(function(){ game_status_update();}, 4000);
+      $("#combination_div").hide(1000);
+      setTimeout(function(){ game_status_update();}, 2000);
     }
 }
  
