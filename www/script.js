@@ -3,14 +3,9 @@ var game_status={};
 $( function(){
    $('#start').prop('disabled', true);
    $('#center_card').hide()
-   $.ajax(
-      {
-         url: "pinnacle.php/deck",
-         method: "POST",
-         success: center_cards
-      }
-   )
+   
    $('#login').click(login_to_game);
+   $("#do_move").click(do_move);
    //Gia thn emfanish xartiwn
     action();
     $("#id").change(function(){
@@ -33,11 +28,46 @@ $( function(){
       $(".hide").hide(1000);
       $("#combination_div").show(1000);
       $("#cards").show(1000);
-      $('#center_card').show(1000);    
+      $('#center_card').show(1000);   
+      if(game_status.status=='started'){
+         center_cards();
+         $.ajax(
+            {
+               url: "pinnacle.php/deck",
+               method: "POST"
+                
+            }
+         )
+      } 
       //$("#login").hide();
    }) ; 
 });
- 
+
+function do_move(){
+   var s = $("#theplay").val();
+
+   var a = s.trim().split(/[ ]+/);
+   if(a.length<6){
+      alert("Combination must be 3 cards or more!");
+      return;
+   }
+   $.ajax({
+      url:"pinnacle.php/move/"+a[0]+'/'+a[1]+'/'+a[2]+'/'+a[3]+'/'+a[4]+'/'+a[5],
+      method:'PUT',
+      dataType: "json",
+      data:JSON.stringify( {token: me.token}),
+      success: move_result,
+      error:login_error
+   });   
+}
+ function move_result(data){
+   for(var i=0;i<data.length;i++){
+      var o = data[i];
+      var number = o.number;
+      var shape = o.shape;
+      $("#comb_result").append(number +" "+shape+"<br>");
+   }
+ }
 
 function login_to_game(){
    if($("#username").val()==''){
@@ -163,11 +193,13 @@ function update_status(data){
       x=0;
       // do play
       $("#combination_div").show(1000);
+      $("#play_card").show(1000);
       setTimeout(function(){ game_status_update();}, 10000);
     }
     else{
       // must wait for something
       $("#combination_div").hide(1000);
+      $("#play_card").hide(1000);
       setTimeout(function(){ game_status_update();}, 2000);
     }
 }

@@ -1,4 +1,5 @@
 <?php 
+require_once "deck.php";
 function show_status(){
     
     global $mysqli;
@@ -75,6 +76,34 @@ function show_center_card(){
     
     global $mysqli;
     $sql = 'select shape,number from deck where location="center"';
+    $st = $mysqli -> prepare($sql);
+
+    $st -> execute();
+    $res = $st -> get_result();
+
+    header('Content-type: application/json');
+    print json_encode($res->fetch_all(MYSQLI_ASSOC),JSON_PRETTY_PRINT);
+}
+function play_comb($b,$token){
+    do_comb($b);
+     
+}
+function do_comb($b){
+    $b[0] = $b[0]-1;
+    $b[2] = $b[2]-1;
+    $b[4] = $b[4]-1;
+    global $mysqli;
+    $sql= 'call play_cards(?,?,?,?,?,?,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL)';
+    $st = $mysqli -> prepare($sql);
+    $st -> bind_param('isisis',$b[0],$b[1],$b[2],$b[3],$b[4],$b[5]);
+    $st -> execute();
+
+    show_comb();
+}
+function show_comb(){
+    global $mysqli;
+
+    $sql = 'select * from deck where location="triada combination player 1"';
     $st = $mysqli -> prepare($sql);
 
     $st -> execute();

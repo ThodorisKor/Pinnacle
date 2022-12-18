@@ -36,6 +36,9 @@
                 header("HTTP/1.1 404 Not Found");
             }
         break;
+        case 'move':
+            handle_move($method,$request,$input);
+            break;
 
         default: 	
         header("HTTP/1.1 404 Not Found");
@@ -85,6 +88,14 @@
     function handle_center($method){
         if($method=='GET'){
             center_cards();
+        }
+    }
+    function handle_move($method,$b,$input){
+        if($method=='PUT'){
+            play_comb($b,$input['token']);
+        }
+        else{
+            header('HTTP/1.1405 Method Not Allowed');
         }
     }
     ?> 
