@@ -27,7 +27,18 @@
                 header("HTTP/1.1 404 Not Found");
             }
         break;
+        
+        case 'playcard':
+            handle_play_card($method,$request);
+        break;
 
+        case 'give_card':
+            handle_givecard($method);
+        break;
+
+        case 'clean_center':
+            handle_clean_center($method);
+        break;
         case 'center':
             if(sizeof($request)==0){
                 handle_center($method); 
@@ -85,9 +96,26 @@
                 break;
         }
     }
+    function handle_givecard($method){
+        if($method=='PUT'){
+            give_card();
+        }
+    }
+    function handle_clean_center($method){
+        if($method=='GET'){
+            clean_center();
+        }
+    }
+    function handle_play_card($method,$b){
+        if($method=='GET'){
+            play_one_card($b);
+        }
+    }
     function handle_center($method){
         if($method=='GET'){
             center_cards();
+        }else if($method=='POST'){
+            show_center_card();
         }
     }
     function handle_move($method,$b,$input){

@@ -112,4 +112,27 @@ function show_comb(){
     header('Content-type: application/json');
     print json_encode($res->fetch_all(MYSQLI_ASSOC),JSON_PRETTY_PRINT);
 }
+function play_one_card($b){
+    print_r($b[0]);
+    
+    global $mysqli;
+
+    $sql = 'call play_a_card_and_change_turn(?,?)';
+    $st = $mysqli -> prepare($sql);
+    $st -> bind_param('ss',$b[0],$b[1]);
+    $st -> execute();
+}
+function clean_center(){
+    global $mysqli;
+
+    $sql = 'call new_center()';
+    $mysqli->query($sql);
+}
+function give_card(){
+    global $mysqli;
+    print_r("gave it ");
+    $sql = 'call getcardpile()';
+    //print_r("gave it");
+    $mysqli->query($sql);
+}
 ?>
