@@ -1,5 +1,6 @@
 <?php 
 require_once "deck.php";
+require_once "users.php";
 function show_status(){
     
     global $mysqli;
@@ -84,10 +85,44 @@ function show_center_card(){
     header('Content-type: application/json');
     print json_encode($res->fetch_all(MYSQLI_ASSOC),JSON_PRETTY_PRINT);
 }
+//allagh edw
 function play_comb($b,$token){
-    do_comb($b);
+    if($token == null || $token==''){
+        header("HTTP/1.1 400 Bad Request");
+        print json_encode(['errormesg'=>"token is not set."]);
+        exit;
+    }
+    $player = current_player($token);
+    if($player == null){
+        header("HTTP/1.1 400 Bad Request");
+        print json_encode(['errormesg'=>"You are not a player of this game."]);
+        exit;
+    }
+    $status = read_status();
+    if($status['status']!='started'){
+        header("HTTP/1.1 400 Bad Request");
+        print json_encode(['errormesg'=>"Game is not in action."]);
+        exit;
+    }
+    if($status['p_turn']!='player '+$player){
+        header("HTTP/1.1 400 Bad Request");
+        print json_encode(['errormesg'=>"It is not your turn."]);
+        exit;
+    }
+     do_comb($b);
      
 }
+//allagh edw
+function read_status(){
+    global $mysqli;
+    $sql = 'select * from game_status';
+    $st = $mysqli -> prepare($sql);
+    $st -> execute();
+    $res = $st -> get_result();
+    $status = $res -> fetch_assoc();
+    return($status);
+}
+
 function do_comb($b){
     $b[0] = $b[0]-1;
     $b[2] = $b[2]-1;

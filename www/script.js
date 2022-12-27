@@ -125,8 +125,9 @@ function do_move(){
    $.ajax({
       url:"pinnacle.php/move/"+a[0]+'/'+a[1]+'/'+a[2]+'/'+a[3]+'/'+a[4]+'/'+a[5],
       method:'PUT',
-      dataType: "json",
-      data:JSON.stringify( {token: me.token}),
+      dataType: "json", 
+      //allagh edw
+      headers: {"X-Token": me.token},
       success: move_result,
       error:login_error
    });   
@@ -257,7 +258,7 @@ function login_error(data,y,z,c){
 }
 
 function game_status_update(){
-   $.ajax({url: "pinnacle.php/status/", success: update_status});
+   $.ajax({url: "pinnacle.php/status/", success: update_status,headers: {"X-Token": me.token}});
 }
 
 function update_status(data){

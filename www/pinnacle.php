@@ -8,7 +8,18 @@
     $request = explode('/', trim($_SERVER['PATH_INFO'],'/'));
     $input = json_decode(file_get_contents('php://input'),true);
 
-   
+    //allagh edw
+    if($input==null){
+        $input=[];
+    }
+    if(isset($_SERVER['HTTP_X_TOKEN'])){
+        $input['token'] = $_SERVER['HTTP_X_TOKEN'];
+    }
+    else{
+        $input['token'] = '';
+    }
+
+
     switch ($r=array_shift($request)) {
         case 'deck' : 
             handle_deck($method,$request[0]);
