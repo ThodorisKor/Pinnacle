@@ -122,18 +122,62 @@ function do_move(){
       alert("Combination must be 3 cards or more!");
       return;
    }
-   $.ajax({
-      url:"pinnacle.php/move/"+a[0]+'/'+a[1]+'/'+a[2]+'/'+a[3]+'/'+a[4]+'/'+a[5],
+   if(a.length==6){
+      $.ajax({
+          url:"pinnacle.php/move/"+a[0]+'/'+a[1]+'/'+a[2]+'/'+a[3]+'/'+a[4]+'/'+a[5],
+          method:'PUT',
+          dataType: "json",
+          contentType: 'application/json',
+          data: JSON.stringify( {token: me.token} ),  
+          //allagh edw
+          //headers: {"X-Token": me.token},
+          success: move_result,
+          error:login_error
+      });   
+  }
+  if(a.length == 8){
+      $.ajax({
+        url:"pinnacle.php/move/"+a[0]+'/'+a[1]+'/'+a[2]+'/'+a[3]+'/'+a[4]+'/'+a[5]+'/'+a[6] +'/'+a[7],
+        method:'PUT',
+        dataType: "json",
+        contentType: 'application/json',
+        data: JSON.stringify( {token: me.token} ),  
+        //allagh edw
+        //headers: {"X-Token": me.token},
+        success: move_result,
+        error:login_error
+    });   
+  }
+  if(a.length == 10){
+    $.ajax({
+      url:"pinnacle.php/move/"+a[0]+'/'+a[1]+'/'+a[2]+'/'+a[3]+'/'+a[4]+'/'+a[5]+'/'+a[6] +'/'+a[7]+'/'+a[8] +'/'+a[9],
       method:'PUT',
-      dataType: "json", 
+      dataType: "json",
+      contentType: 'application/json',
+      data: JSON.stringify( {token: me.token} ),  
       //allagh edw
-      headers: {"X-Token": me.token},
+      //headers: {"X-Token": me.token},
       success: move_result,
       error:login_error
-   });   
+  });   
+}
+if(a.length == 12){
+  $.ajax({
+    url:"pinnacle.php/move/"+a[0]+'/'+a[1]+'/'+a[2]+'/'+a[3]+'/'+a[4]+'/'+a[5]+'/'+a[6] +'/'+a[7]+'/'+a[8] +'/'+a[9]+'/'+a[10] +'/'+a[11],
+    method:'PUT',
+    dataType: "json",
+    contentType: 'application/json',
+    data: JSON.stringify( {token: me.token} ),  
+    //allagh edw
+    //headers: {"X-Token": me.token},
+    success: move_result,
+    error:login_error
+});   
+}
 }
 
 function move_result(data){
+  $("#comb_result").html('');
    for(var i=0;i<data.length;i++){
       var o = data[i];
       var number = o.number;
@@ -258,7 +302,7 @@ function login_error(data,y,z,c){
 }
 
 function game_status_update(){
-   $.ajax({url: "pinnacle.php/status/", success: update_status,headers: {"X-Token": me.token}});
+   $.ajax({url: "pinnacle.php/status/", success: update_status});
 }
 
 function update_status(data){
@@ -271,14 +315,14 @@ function update_status(data){
       $("#play_card").show(1000);
       $('#get_card').show(1000);
 
-      setTimeout(function(){ game_status_update();}, 10000);
+      setTimeout(function(){ game_status_update();}, 500);
     }
     else{
       // must wait for something
       $("#combination_div").hide(1000);
       $("#play_card").hide(1000);
       $('#get_card').hide(1000);
-      setTimeout(function(){ game_status_update();}, 2000);
+      setTimeout(function(){ game_status_update();}, 500);
     }
 }
  

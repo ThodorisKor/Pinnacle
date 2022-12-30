@@ -1,6 +1,7 @@
 <?php 
 require_once "deck.php";
 require_once "users.php";
+
 function show_status(){
     
     global $mysqli;
@@ -86,8 +87,9 @@ function show_center_card(){
     print json_encode($res->fetch_all(MYSQLI_ASSOC),JSON_PRETTY_PRINT);
 }
 //allagh edw
-function play_comb($b,$token){
-    if($token == null || $token==''){
+function play_comb($b){
+    
+    /* if($token == null || $token==''){
         header("HTTP/1.1 400 Bad Request");
         print json_encode(['errormesg'=>"token is not set."]);
         exit;
@@ -103,15 +105,15 @@ function play_comb($b,$token){
         header("HTTP/1.1 400 Bad Request");
         print json_encode(['errormesg'=>"Game is not in action."]);
         exit;
-    }
-    if($status['p_turn']!='player '+$player){
+    }   */
+    /* if($status['p_turn']!='player '+$player){
         header("HTTP/1.1 400 Bad Request");
         print json_encode(['errormesg'=>"It is not your turn."]);
         exit;
-    }
+    }  */
      do_comb($b);
      
-}
+}   
 //allagh edw
 function read_status(){
     global $mysqli;
@@ -124,22 +126,70 @@ function read_status(){
 }
 
 function do_comb($b){
+    
+    for($i=0; $i<= count($b)-1; $i++){
+        if($b[$i] == "J"){
+            $b[$i]=11;
+        }
+        elseif($b[$i] == "Q"){
+            $b[$i]=12;
+        }
+        elseif($b[$i] == "K"){
+            $b[$i]=13;
+        }
+        elseif($b[$i] == "A"){
+            $b[$i]=14;
+        }
+    }
     $b[0] = $b[0]-1;
     $b[2] = $b[2]-1;
-    $b[4] = $b[4]-1;
+    $b[4] = $b[4]-1; 
+   
     global $mysqli;
-    $sql= 'call play_cards(?,?,?,?,?,?,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL)';
-    $st = $mysqli -> prepare($sql);
-    $st -> bind_param('isisis',$b[0],$b[1],$b[2],$b[3],$b[4],$b[5]);
-    $st -> execute();
+    
+    if(count($b) == 6){
+        $sql= 'call play_cards(?,?,?,?,?,?,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL)';
+        $st = $mysqli -> prepare($sql);
+        $st -> bind_param('isisis',$b[0],$b[1],$b[2],$b[3],$b[4],$b[5]);
+    }
 
+    if(count($b) == 8){
+        $b[6] = $b[6] -1;
+        $sql= 'call play_cards(?,?,?,?,?,?,?,?,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL)';
+        $st = $mysqli -> prepare($sql);
+        $st -> bind_param('isisisis',$b[0],$b[1],$b[2],$b[3],$b[4],$b[5],$b[6],$b[7]);
+    }
+    
+    if(count($b) == 10){
+        $b[6] = $b[6] -1;
+        $b[8] = $b[8] -1;
+        $sql= 'call play_cards(?,?,?,?,?,?,?,?,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL)';
+        $st = $mysqli -> prepare($sql);
+        $st -> bind_param('isisisisis',$b[0],$b[1],$b[2],$b[3],$b[4],$b[5],$b[6],$b[7],$b[8],$b[9]);
+    }
+    if(count($b) == 12){
+        $b[6] = $b[6] -1;
+        $b[8] = $b[8] -1;
+        $b[10] = $b[10] -1;
+        $sql= 'call play_cards(?,?,?,?,?,?,?,?,?,?,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL)';
+        $st = $mysqli -> prepare($sql);
+        $st -> bind_param('isisisisisis',$b[0],$b[1],$b[2],$b[3],$b[4],$b[5],$b[6],$b[7],$b[8],$b[9],$b[10],$b[11]);
+    }
+   
+    
+    $st -> execute(); 
+    
     show_comb();
 }
 function show_comb(){
     global $mysqli;
+    $turn = read_status();
+    $comb1 = "triada combination ".$turn['p_turn'];
+    $comb2 = "kenta combination ".$turn['p_turn'];
 
-    $sql = 'select * from deck where location="triada combination player 1"';
+    $sql = 'select * from deck where location in(?,?)';
     $st = $mysqli -> prepare($sql);
+    $st -> bind_param('ss',$comb1,$comb2);
 
     $st -> execute();
     $res = $st -> get_result();
@@ -165,7 +215,7 @@ function clean_center(){
 }
 function give_card(){
     global $mysqli;
-    print_r("gave it ");
+    //print_r("gave it ");
     $sql = 'call getcardpile()';
     //print_r("gave it");
     $mysqli->query($sql);

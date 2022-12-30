@@ -7,18 +7,15 @@
     $method = $_SERVER['REQUEST_METHOD'];
     $request = explode('/', trim($_SERVER['PATH_INFO'],'/'));
     $input = json_decode(file_get_contents('php://input'),true);
-
-    //allagh edw
-    if($input==null){
+    /*  if($input==null) {
         $input=[];
     }
-    if(isset($_SERVER['HTTP_X_TOKEN'])){
-        $input['token'] = $_SERVER['HTTP_X_TOKEN'];
-    }
-    else{
-        $input['token'] = '';
-    }
-
+    if(isset($_SERVER['HTTP_X_TOKEN'])) {
+        $input['token']=$_SERVER['HTTP_X_TOKEN'];
+    } else {
+        $input['token']='';
+    }   */
+    //$input=$_SERVER['HTTP_X_TOKEN'];
 
     switch ($r=array_shift($request)) {
         case 'deck' : 
@@ -130,8 +127,10 @@
         }
     }
     function handle_move($method,$b,$input){
-        if($method=='PUT'){
-            play_comb($b,$input['token']);
+        //print_r(apache_request_headers);
+        
+        if($method=='PUT'){     
+            play_comb($b);
         }
         else{
             header('HTTP/1.1405 Method Not Allowed');
