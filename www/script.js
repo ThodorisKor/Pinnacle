@@ -82,7 +82,7 @@ $(function () {
 function get_card_pile() {
   $.ajax({
     url: "pinnacle.php/give_card",
-    method: "PUT",
+    method: "POST",
     success: function (data) {
       alert("you got a card from pile");
       console.log("ektelestike to give card sever side!");
@@ -101,12 +101,14 @@ function play_card() {
 
   $.ajax({
     url: "pinnacle.php/clean_center",
+    method: "POST",
     success: function () {
       //console.log("");
     },
   });
   $.ajax({
     url: "pinnacle.php/playcard/" + splittext[0] + "/" + splittext[1],
+    method: "PUT",
     success: function (data) {
       $("#center_card").html("<h6>" + text + "</h6>");
       document.getElementById("center_card").classList.add("bg-info");
@@ -130,7 +132,7 @@ function do_move(){
           contentType: 'application/json',
           data: JSON.stringify( {token: me.token} ),  
           //allagh edw
-          //headers: {"X-Token": me.token},
+          headers: {"X-Token": me.token},
           success: move_result,
           error:login_error
       });   
@@ -302,7 +304,7 @@ function login_error(data,y,z,c){
 }
 
 function game_status_update(){
-   $.ajax({url: "pinnacle.php/status/", success: update_status});
+   $.ajax({url: "pinnacle.php/status/", success: update_status,headers: {"X-Token":me.token}});
 }
 
 function update_status(data){

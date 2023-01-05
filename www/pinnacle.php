@@ -7,15 +7,15 @@
     $method = $_SERVER['REQUEST_METHOD'];
     $request = explode('/', trim($_SERVER['PATH_INFO'],'/'));
     $input = json_decode(file_get_contents('php://input'),true);
-    /*  if($input==null) {
+      if($input==null) {
         $input=[];
     }
     if(isset($_SERVER['HTTP_X_TOKEN'])) {
         $input['token']=$_SERVER['HTTP_X_TOKEN'];
     } else {
         $input['token']='';
-    }   */
-    //$input=$_SERVER['HTTP_X_TOKEN'];
+    }    
+     //$input=$_SERVER['HTTP_X_TOKEN'];
 
     switch ($r=array_shift($request)) {
         case 'deck' : 
@@ -105,17 +105,17 @@
         }
     }
     function handle_givecard($method){
-        if($method=='PUT'){
+        if($method=='POST'){
             give_card();
         }
     }
     function handle_clean_center($method){
-        if($method=='GET'){
+        if($method=='POST'){
             clean_center();
         }
     }
     function handle_play_card($method,$b){
-        if($method=='GET'){
+        if($method=='PUT'){
             play_one_card($b);
         }
     }
@@ -127,13 +127,12 @@
         }
     }
     function handle_move($method,$b,$input){
-        //print_r(apache_request_headers);
-        
+   
         if($method=='PUT'){     
-            play_comb($b);
+            play_comb($b,$input['token']);
         }
         else{
-            header('HTTP/1.1405 Method Not Allowed');
+            header('HTTP/1.1 405 Method Not Allowed');
         }
     }
     ?> 

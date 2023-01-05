@@ -87,9 +87,9 @@ function show_center_card(){
     print json_encode($res->fetch_all(MYSQLI_ASSOC),JSON_PRETTY_PRINT);
 }
 //allagh edw
-function play_comb($b){
+function play_comb($b,$token){
     
-    /* if($token == null || $token==''){
+     if($token == null || $token==''){
         header("HTTP/1.1 400 Bad Request");
         print json_encode(['errormesg'=>"token is not set."]);
         exit;
@@ -105,12 +105,12 @@ function play_comb($b){
         header("HTTP/1.1 400 Bad Request");
         print json_encode(['errormesg'=>"Game is not in action."]);
         exit;
-    }   */
-    /* if($status['p_turn']!='player '+$player){
+    }    
+     if($status['p_turn']!='player '.$player){
         header("HTTP/1.1 400 Bad Request");
         print json_encode(['errormesg'=>"It is not your turn."]);
         exit;
-    }  */
+    }   
      do_comb($b);
      
 }   
