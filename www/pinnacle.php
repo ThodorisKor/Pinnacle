@@ -80,6 +80,9 @@
         if($method=='GET'){
             show_status();
         }
+        elseif($method =='POST'){
+            result_status();
+        }
         else{
             header('HTTP/1.1 405 Method Not Allowed');
         }
@@ -94,11 +97,15 @@
         }
     }
     function handle_player($method,$p,$input){
+        if($method == "POST"){
+            reset_game();
+        }
         switch ($b=array_shift($p)){
             case '1':
             case '2':
                 handle_user($method,$b,$input);
                 break;
+            
             default: header("HTTP/1.1 404 Not Found");
                      print json_encode(['errormesg'=>"Player $b not found."]);
                 break;

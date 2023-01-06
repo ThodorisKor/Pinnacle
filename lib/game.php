@@ -114,7 +114,18 @@ function play_comb($b,$token){
      do_comb($b);
      
 }   
-//allagh edw
+function result_status(){
+    global $mysqli;
+    
+    $status = read_status();
+    $p_turn = $status['p_turn'];
+
+    $sql = 'update game_status set result=?';
+    $st = $mysqli -> prepare($sql);
+    $st ->bind_param('s',$p_turn);
+    $st-> execute();
+}
+ 
 function read_status(){
     global $mysqli;
     $sql = 'select * from game_status';

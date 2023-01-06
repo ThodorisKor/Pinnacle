@@ -1,8 +1,15 @@
 var me={};
 var game_status={};
 var state=0;
+var i=0; //counter gia to posa cards mporei o paikths na traviksei apo to pile
 
 $(function () {
+  $.ajax({
+    url:"pinnacle.php/player",
+    method: "POST",
+    error: login_error
+  });
+
   $("#login").click(function () {
     setTimeout(() => {
       $.ajax({
@@ -34,6 +41,7 @@ $(function () {
     action();
   });
   $("#cards").hide();
+  $("#comb_string").hide();
   $("#play_card").hide();
   //edw
   $("#get_card").click(function () {
@@ -60,6 +68,7 @@ $(function () {
     $("#game_info").show(1000);
     $("#play_card").show(1000);
     $("#get_card").show(1000);
+    $("#comb_string").show();
     $("#head").hide(1000);
     $(".hide").hide(1000);
     $("#combination_div").show(1000);
@@ -80,18 +89,26 @@ $(function () {
 });
 
 function get_card_pile() {
-  $.ajax({
-    url: "pinnacle.php/give_card",
-    method: "POST",
-    success: function (data) {
-      alert("you got a card from pile");
-      console.log("ektelestike to give card sever side!");
-      document.getElementById("cards").innerHTML = "";
-      action();
-    },
-  });
+   
+  if(i==0){
+    $.ajax({
+      url: "pinnacle.php/give_card",
+      method: "POST",
+      success: function (data) {
+        alert("you got a card from pile");
+        console.log("ektelestike to give card sever side!");
+        document.getElementById("cards").innerHTML = "";
+        action();
+      },
+    });
+    i=1; //exei traviksei ena xarti apo to pile
+  }
+  else{
+    alert("You can only get 1 pile card per turn!");
+  }
 }
 function play_card() {
+  i=0; //to counter twn xartiwn pou travhkse apo to pile mhdenizetai gia na mporei na ksana traviksei 1 xarti otan erthei h seira tou
   var selected = document.getElementById("cards");
   var value = selected.value;
   var text = selected.options[selected.selectedIndex].text;
@@ -115,6 +132,13 @@ function play_card() {
       selected.options[selected.selectedIndex].remove();
     },
   });
+  if($('#cards').children('option').length == 1){
+    $.ajax({
+      url:"pinnacle.php/status",
+      method:"POST",
+      error:login_error
+    });        
+  }
 }
 function do_move(){
    var s = $("#theplay").val();
@@ -145,7 +169,7 @@ function do_move(){
         contentType: 'application/json',
         data: JSON.stringify( {token: me.token} ),  
         //allagh edw
-        //headers: {"X-Token": me.token},
+        headers: {"X-Token": me.token},
         success: move_result,
         error:login_error
     });   
@@ -158,7 +182,7 @@ function do_move(){
       contentType: 'application/json',
       data: JSON.stringify( {token: me.token} ),  
       //allagh edw
-      //headers: {"X-Token": me.token},
+      headers: {"X-Token": me.token},
       success: move_result,
       error:login_error
   });   
@@ -179,6 +203,7 @@ if(a.length == 12){
 }
 
 function move_result(data){
+  $('#theplay').html('');
   $("#comb_result").html('');
    for(var i=0;i<data.length;i++){
       var o = data[i];
@@ -186,6 +211,7 @@ function move_result(data){
       var shape = o.shape;
       $("#comb_result").append(number +" "+shape+"<br>");
    }
+   action();
 }
 
 function login_to_game(){
@@ -223,6 +249,7 @@ function action() {
   });
 }
 function show_deck(data){
+  $('#cards').html("");
    for(var i=0;i<data.length;i++){
       var o = data[i];
       var number = o.number;
@@ -268,6 +295,16 @@ function update_info(){
    if(game_status.status=='started'){
       $('#start').prop('disabled', false);
       center_cards();
+   }
+   if(game_status.result != null){
+     
+    document.getElementById("alert").innerHTML=
+                   '<div class="container">'+
+                       '<div class="alert text-center alert-danger alert-dismissible fade show">'+
+                            '<button type="button" class="btn-close bg-danger bg-opacity-25" data-dismiss="alert"></button>'+
+                             '<strong>GAME OVER! '+game_status.p_turn+' won!'+ '</strong>' 
+                         '</div>'+
+                   '</div>';
    }
 }
 
