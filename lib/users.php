@@ -12,19 +12,19 @@
             $status = read_status();
             $game_status = $status['status'];
 
-            if($game_status !='started' || $game_status !='initialized' ){
-                $sql = 'UPDATE `players` SET `username`=NULL ';
-                $st  = $mysqli -> prepare($sql);
-                $st -> execute();
+             
+            $sql = 'UPDATE `players` SET `username`=NULL ';
+            $st  = $mysqli -> prepare($sql);
+            $st -> execute();
 
-                $sql2 = 'UPDATE game_status set result = NULL';
-                $st2  = $mysqli -> prepare($sql2);
-                $st2 -> execute();
-                
-                $sql3 = 'UPDATE game_status set status = "not active"';
-                $st3  = $mysqli -> prepare($sql3);
-                $st3 -> execute();
-            }  
+            $sql2 = 'UPDATE game_status set result = NULL';
+            $st2  = $mysqli -> prepare($sql2);
+            $st2 -> execute();
+            
+            $sql3 = 'UPDATE game_status set status = "not active"';
+            $st3  = $mysqli -> prepare($sql3);
+            $st3 -> execute();
+              
             
     }
 
