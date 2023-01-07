@@ -195,7 +195,7 @@ if(a.length == 12){
     contentType: 'application/json',
     data: JSON.stringify( {token: me.token} ),  
     //allagh edw
-    //headers: {"X-Token": me.token},
+    headers: {"X-Token": me.token},
     success: move_result,
     error:login_error
 });   
