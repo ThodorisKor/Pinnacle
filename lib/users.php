@@ -9,10 +9,10 @@
     function reset_game(){
             global $mysqli;
 
-               $status = read_status();
+            $status = read_status();
             $game_status = $status['status'];
 
-            if($game_status !='started' or $game_status !='initialized' ){
+            if($game_status !='started' || $game_status !='initialized' ){
                 $sql = 'UPDATE `players` SET `username`=NULL ';
                 $st  = $mysqli -> prepare($sql);
                 $st -> execute();
