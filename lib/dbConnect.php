@@ -11,10 +11,9 @@ $pass=$DB_PASS;
 if(gethostname()=='users.iee.ihu.gr') {
         
 	$mysqli = new mysqli($host, $user, $pass, $db,null,'/home/student/it/2018/it185430/mysql/run/mysql.sock');
-        echo '<script>alert("mphke sto users")</script>';
          
 } else {
-        echo '<script>alert("mphke sto else")</script>';
+        
         $mysqli = new mysqli($host, $user, $pass, $db);
         
          
