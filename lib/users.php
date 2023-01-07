@@ -12,10 +12,7 @@
                $status = read_status();
             $game_status = $status['status'];
 
-            if($game_status == 'initialized' or $game_status == 'started'){
-
-            }  
-           else{  
+            if($game_status != 'not active'){
                 $sql = 'UPDATE `players` SET `username`=NULL ';
                 $st  = $mysqli -> prepare($sql);
                 $st -> execute();
@@ -27,7 +24,8 @@
                 $sql3 = 'UPDATE game_status set status = "not active"';
                 $st3  = $mysqli -> prepare($sql3);
                 $st3 -> execute();
-             }
+            }  
+            
     }
 
     function show_user($b){
