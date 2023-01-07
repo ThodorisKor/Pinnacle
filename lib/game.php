@@ -159,7 +159,7 @@ function do_comb($b){
     global $mysqli;
     
     if(count($b) == 6){
-        print_r("sadasdasdasd");
+         
         $sql= 'call play_cards(?,?,?,?,?,?,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL)';
         $st = $mysqli -> prepare($sql);
         $st -> bind_param('isisis',$b[0],$b[1],$b[2],$b[3],$b[4],$b[5]);
