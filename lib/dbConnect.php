@@ -20,5 +20,6 @@ if(gethostname()=='users.iee.ihu.gr') {
 }
 
 if ($mysqli->connect_errno) {
-        echo '<script>alert("Connection to database failed!")</script>';
+         
+        echo '<script>alert("connect_errno")</script>';
 }?>
