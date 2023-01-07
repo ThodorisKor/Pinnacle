@@ -1,6 +1,6 @@
  
 <?php
-$host='users.iee.ihu.gr';
+$host='localhost';
 $db = 'pinnacle';
 require_once "db_upass.php";
 
