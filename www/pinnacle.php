@@ -104,8 +104,7 @@
             case '1':
             case '2':
                 handle_user($method,$b,$input);
-                break;
-            
+                break;           
             default: header("HTTP/1.1 404 Not Found");
                      print json_encode(['errormesg'=>"Player $b not found."]);
                 break;
