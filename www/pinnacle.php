@@ -79,6 +79,7 @@
     function handle_status($method){
         if($method=='GET'){
             show_status();
+            update_game_status();
         }
         elseif($method =='POST'){
             result_status();
