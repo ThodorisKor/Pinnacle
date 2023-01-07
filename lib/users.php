@@ -8,14 +8,22 @@
     }
     function reset_game(){
             global $mysqli;
-            $sql = 'UPDATE `players` SET `username`=NULL ';
-            $st  = $mysqli -> prepare($sql);
-            $st -> execute();
 
-            $sql2 = 'UPDATE game_status set result = NULL';
-            $st2  = $mysqli -> prepare($sql2);
-            $st2 -> execute();
-      
+            $status = read_status();
+            $game_status = $status['status'];
+
+            if($game_status == 'initialized' || $game_status == 'started'){
+
+            }
+            else{
+                $sql = 'UPDATE `players` SET `username`=NULL ';
+                $st  = $mysqli -> prepare($sql);
+                $st -> execute();
+
+                $sql2 = 'UPDATE game_status set result = NULL';
+                $st2  = $mysqli -> prepare($sql2);
+                $st2 -> execute();
+            }
     }
 
     function show_user($b){

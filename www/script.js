@@ -302,7 +302,7 @@ function update_info(){
                    '<div class="container">'+
                        '<div class="alert text-center alert-danger alert-dismissible fade show">'+
                             '<button type="button" class="btn-close bg-danger bg-opacity-25" data-dismiss="alert"></button>'+
-                             '<strong>GAME OVER! '+game_status.p_turn+' won!'+ '</strong>' 
+                             '<strong>GAME OVER! '+game_status.result+' won!'+ '</strong>' 
                          '</div>'+
                    '</div>';
    }
