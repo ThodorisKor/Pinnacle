@@ -157,7 +157,7 @@ function do_comb($b){
     $b[4] = $b[4]-1; 
    
     global $mysqli;
-    echo("echoooo");
+    print_r("eieieieieieieie");
     if(count($b) == 6){
         $sql= 'call play_cards(?,?,?,?,?,?,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL)';
         $st = $mysqli -> prepare($sql);
