@@ -12,7 +12,7 @@
                $status = read_status();
             $game_status = $status['status'];
 
-            if($game_status != 'not active'){
+            if($game_status != 'not active' || $game_status != 'initialized'){
                 $sql = 'UPDATE `players` SET `username`=NULL ';
                 $st  = $mysqli -> prepare($sql);
                 $st -> execute();
