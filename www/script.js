@@ -4,6 +4,9 @@ var state=0;
 var i=0; //counter gia to posa cards mporei o paikths na traviksei apo to pile
 
 $(function () {
+  $("#cards").hide();
+  $("#comb_string").hide();
+  $("#play_card").hide();
   $.ajax({
     url:"pinnacle.php/player",
     method: "POST",
@@ -40,9 +43,7 @@ $(function () {
     document.getElementById("cards").innerHTML = "";
     action();
   });
-  $("#cards").hide();
-  $("#comb_string").hide();
-  $("#play_card").hide();
+  
   //edw
   $("#get_card").click(function () {
     console.log("patithike to click!");
