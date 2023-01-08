@@ -203,7 +203,6 @@ if(a.length == 12){
 }
 
 function move_result(data){
-  $('#theplay').val() ='';
   $("#comb_result").html('');
    for(var i=0;i<data.length;i++){
       var o = data[i];
