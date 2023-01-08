@@ -321,10 +321,10 @@ function update_status(data){
     if(game_status.p_turn=="player "+me.id && me.id!=null){
       x=0;
       // do play
-      if($('#start').click){
-      $("#combination_div").show(1000);
-      $("#play_card").show(1000);
-      $('#get_card').show(1000);
+      if($("#start").is(":hidden")){
+        $("#combination_div").show(1000);
+        $("#play_card").show(1000);
+        $('#get_card').show(1000);
       }
       setTimeout(function(){ game_status_update();}, 500);
     }
