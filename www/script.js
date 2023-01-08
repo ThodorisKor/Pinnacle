@@ -59,7 +59,6 @@ $(function () {
   );
 
   $("#start").click(function () {
-    deck_handle();
     document.getElementById("cards").innerHTML = "";
     action();
     document.getElementById("started").classList.add("fixed-bottom");
