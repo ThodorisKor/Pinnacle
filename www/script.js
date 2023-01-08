@@ -4,9 +4,6 @@ var state=0;
 var i=0; //counter gia to posa cards mporei o paikths na traviksei apo to pile
 
 $(function () {
-  $("#cards").hide();
-  $("#comb_string").hide();
-  $("#play_card").hide();
   $.ajax({
     url:"pinnacle.php/player",
     method: "POST",
@@ -43,7 +40,9 @@ $(function () {
     document.getElementById("cards").innerHTML = "";
     action();
   });
-  
+  $("#cards").hide();
+  $("#comb_string").hide();
+  $("#play_card").hide();
   //edw
   $("#get_card").click(function () {
     console.log("patithike to click!");
@@ -261,31 +260,12 @@ function show_deck(data){
    }   
 } 
 
-function deck_handle(){
-   //url ajax 
-   //succes go to other function store the variables 
-   //show the center card on the page
-  
-}
-
 function login_result(data){
    alert("User Added!");
    //$('#start').prop('disabled', false);
    me = data[0]; 
    update_info();
    game_status_update();
-  
-   
-   //bootstrap alert parakatw
-   /*
-   document.getElementById("alert").innerHTML+=
-      '<div class="container">'+
-                       '<div class="alert text-center alert-success alert-dismissible fade show">'+
-                            '<button type="button" class="btn-close bg-success bg-opacity-25" data-dismiss="alert"></button>'+
-                             '<strong>Success!</strong> User Added!'+
-                         '</div>'+
-                   '</div>'; 
-   */
 }
  
  
@@ -329,15 +309,6 @@ function get_center_card(data) {
 function login_error(data,y,z,c){
    var x= data.responseJSON;
    alert(x.errormesg);
-   //bootstrap alert parakatw
-     /* document.getElementById("alert").innerHTML+=
-                     '<div class="container">'+
-                       '<div class="alert text-center alert-danger alert-dismissible fade show">'+
-                            '<button type="button" class="btn-close bg-danger bg-opacity-25" data-dismiss="alert"></button>'+
-                             '<strong>ERROR!</strong>'+x.errormesg+
-                         '</div>'+
-                     '</div>'; */
-       
 }
 
 function game_status_update(){
@@ -350,10 +321,11 @@ function update_status(data){
     if(game_status.p_turn=="player "+me.id && me.id!=null){
       x=0;
       // do play
+      if($('#start').click){
       $("#combination_div").show(1000);
       $("#play_card").show(1000);
       $('#get_card').show(1000);
-
+      }
       setTimeout(function(){ game_status_update();}, 500);
     }
     else{
