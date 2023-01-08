@@ -181,7 +181,7 @@ Aρμοδιότητες ομάδας :
 
 - **Βασίλης Δραμιτινός** : Σχεδιασμός mysql , Υλοποίηση Βάσης , Υλοποίηση sql procedures , Υλοποίηση php API ,  JQuery , javascript.
 
-- **Θοδωρής Κορδατζάκης** : Υλοποίηση html Page , Υλοποίηση php API , bootstrap , javascript client side , JQuery , debugging , Υλοποίηση sql procedures.
+- **Θοδωρής Κορδατζάκης** : Υλοποίηση html Page , Υλοποίηση php API , Bootstrap , javascript , JQuery , debugging , Υλοποίηση sql procedures.
         
 
 
