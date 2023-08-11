@@ -98,7 +98,7 @@ $ git clone https://github.com/iee-ihu-gr-course1941/ADISE22_PINNACLE.git
  - **Tables included in the Database :**  
         > The Players table contains players' information.
    
-       <table>
+       	<table>
         <tr>
         <th>Players</th>
         </tr>
@@ -112,7 +112,7 @@ $ git clone https://github.com/iee-ihu-gr-course1941/ADISE22_PINNACLE.git
         </td>
         </tr></table>
 
-        > ο πίνακας game_status περιέχει στοιχεία για την σειρά παίκτη που παίζει , σε τι status βρίσκεται το game και το result.
+        > The 'game_status' table contains information about the player's turn, the status of the game, and the result.
 
         <table>
         <tr>
@@ -129,7 +129,7 @@ $ git clone https://github.com/iee-ihu-gr-course1941/ADISE22_PINNACLE.git
         </td>
         </tr></table>
 
-        > ο πίνακας deck_empty περιέχει τα στοιχεία όλης της τράπουλας με όλα τα χαρτιά αρχικοποιημένα σε θέση(location) NULL.
+        > The 'deck_empty' table contains the elements of the entire deck with all cards initialized to a position (location) of NULL.
         <table>
         <tr>
         
@@ -145,7 +145,7 @@ $ git clone https://github.com/iee-ihu-gr-course1941/ADISE22_PINNACLE.git
         </td>
         </tr></table>
 
-        > ο πίνακας deck περιέχει τα στοιχεία όλης της τράπουλας αλλά με τις θέσεις(location) τροποποιημένες αναλόγως το παιχνίδι που εξελίσσεται.
+        > The 'deck' table contains the elements of the entire deck, but with the positions (locations) modified according to the progressing game.
         <table>
         <tr>
         
