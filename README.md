@@ -2,8 +2,8 @@
 
 Pinnacle παιχνίδι 2 ατόμων μέσα απο τον browser. 
 
-[![English](https://img.shields.io/badge/language-English-blue)](README.md)
-[![Ελληνικά](https://img.shields.io/badge/language-%CE%95%CE%BB%CE%BB%CE%B7%CE%BD%CE%B9%CE%BA%CE%AC-green)](README_GR.md)
+[![English](https://img.shields.io/badge/language-English-blue)](README_EN.md)
+[![Ελληνικά](https://img.shields.io/badge/language-%CE%95%CE%BB%CE%BB%CE%B7%CE%BD%CE%B9%CE%BA%CE%AC-green)](README.md)
 
 ## Demo game
 
