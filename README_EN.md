@@ -130,8 +130,9 @@ $ git clone https://github.com/iee-ihu-gr-course1941/ADISE22_PINNACLE.git
    	</td>
         </tr></table>
 
-   	> The 'deck_empty' table contains the elements of the entire deck with all cards initialized to a position (location) of NULL.
-        <table>
+	> The 'deck_empty' table contains the elements of the entire deck with all cards initialized to a position (location) of NULL.
+
+ 	<table>
         <tr>
         
    	<th>deck_empty</th>
@@ -144,10 +145,11 @@ $ git clone https://github.com/iee-ihu-gr-course1941/ADISE22_PINNACLE.git
         | ENUM | VARCHAR | VARCHAR 
 
    	</td>
-        </tr></table>
-
-   	> The 'deck' table contains the elements of the entire deck, but with the positions (locations) modified according to the progressing game.
-        <table>
+        </tr>
+	</table>	
+ 
+  	> The 'deck' table contains the elements of the entire deck, but with the positions (locations) modified according to the progressing game.
+   	<table>
         <tr>
         
    	<th>deck</th>
