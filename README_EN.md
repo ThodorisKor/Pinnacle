@@ -2,6 +2,9 @@
 
 Pinnacle 2-player game played through the browser.
 
+[![English](https://img.shields.io/badge/language-English-blue)](README_EN.md)
+[![Ελληνικά](https://img.shields.io/badge/language-%CE%95%CE%BB%CE%BB%CE%B7%CE%BD%CE%B9%CE%BA%CE%AC-green)](README.md)
+
 ## Demo game
 
 - You can find the demo at the following link -> https://users.iee.ihu.gr/~it185430/ADISE22_PINNACLE/www/index.html
