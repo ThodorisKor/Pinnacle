@@ -98,67 +98,68 @@ $ git clone https://github.com/iee-ihu-gr-course1941/ADISE22_PINNACLE.git
  - **Tables included in the Database :**  
         > The Players table contains players' information.
    
-        <table>
+   	<table>
         <tr>
         <th>Players</th>
         </tr>
         <tr>
         <td>
 
-        | username | id | token | last action
+   	| username | id | token | last action
         |--|--|--|--|
         | VARCHAR | INT | VARCHAR | TIMESTAMP
 
-        </td>
-        </tr></table>
+   	</td>
+        </tr>
+   	</table>
 
-        > The 'game_status' table contains information about the player's turn, the status of the game, and the result.
+   	> The 'game_status' table contains information about the player's turn, the status of the game, and the result.
 
-        <table>
+   	<table>
         <tr>
    
-        <th>game_status</th>
+   	<th>game_status</th>
         </tr>
         <tr>
         <td>
 
-        | status | p_turn | result | last_action
+   	| status | p_turn | result | last_action
         |--|--|--|--|
         | ENUM | ENUM | ENUM | TIMESTAMP
 
-        </td>
+   	</td>
         </tr></table>
 
-        > The 'deck_empty' table contains the elements of the entire deck with all cards initialized to a position (location) of NULL.
+   	> The 'deck_empty' table contains the elements of the entire deck with all cards initialized to a position (location) of NULL.
         <table>
         <tr>
         
-        <th>deck_empty</th>
+   	<th>deck_empty</th>
         </tr>
         <tr>
         <td>
 
-        | number | shape | location
+   	| number | shape | location
         |--|--|--|
         | ENUM | VARCHAR | VARCHAR 
 
-        </td>
+   	</td>
         </tr></table>
 
-        > The 'deck' table contains the elements of the entire deck, but with the positions (locations) modified according to the progressing game.
+   	> The 'deck' table contains the elements of the entire deck, but with the positions (locations) modified according to the progressing game.
         <table>
         <tr>
         
-        <th>deck</th>
+   	<th>deck</th>
         </tr>
         <tr>
         <td>
 
-        | number | shape | location
+   	| number | shape | location
         |--|--|--|
         | ENUM | VARCHAR | VARCHAR 
 
-        </td>
+   	</td>
         </tr></table>
    
 - ### The application has been developed up to the point where:
