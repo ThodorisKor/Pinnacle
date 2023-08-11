@@ -160,7 +160,8 @@ $ git clone https://github.com/iee-ihu-gr-course1941/ADISE22_PINNACLE.git
         | ENUM | VARCHAR | VARCHAR 
 
    	</td>
-        </tr></table>
+        </tr>
+	</table>
    
 - ### The application has been developed up to the point where:
    - The player can play a card in the center.
