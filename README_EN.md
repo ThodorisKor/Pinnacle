@@ -98,7 +98,7 @@ $ git clone https://github.com/iee-ihu-gr-course1941/ADISE22_PINNACLE.git
  - **Tables included in the Database :**  
         > The Players table contains players' information.
    
-       	<table>
+        <table>
         <tr>
         <th>Players</th>
         </tr>
