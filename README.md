@@ -1,46 +1,46 @@
 # ADISE22_PINNACLE
 
-Pinnacle παιχνίδι 2 ατόμων μέσα απο τον browser. 
+Pinnacle 2-player game played through the browser.
 
 [![English](https://img.shields.io/badge/language-English-blue)](README_EN.md)
 [![Ελληνικά](https://img.shields.io/badge/language-%CE%95%CE%BB%CE%BB%CE%B7%CE%BD%CE%B9%CE%BA%CE%AC-green)](README.md)
 
 ## Demo game
 
- - Mπορείτε να βρείτε το demo στο link -> https://users.iee.ihu.gr/~it185430/ADISE22_PINNACLE/www/index.html
+- You can find the demo at the following link -> https://users.iee.ihu.gr/~it185430/ADISE22_PINNACLE/www/index.html
 
 Table of Contents
 =================
-   * [Εγκατάσταση](#εγκατάσταση)
-      * [Απαιτήσεις](#απαιτήσεις)
-      * [Οδηγίες Εγκατάστασης](#οδηγίες-εγκατάστασης)
-   * [Περιγραφή API](#περιγραφή-api)
+   * [Installation](#installation)
+      * [Requirements](#requirements)
+      * [Installation Instructions](#installation-instructions)
+   * [API Description](#api-description)
       * [Methods](#methods)
          * [Deck](#deck)
-            * [Αρχικοποίηση Deck](#αρχικοποίηση-deck)
-            * [Ανάγνωση Deck](#ανάγνωση-deck)
+            * [Initialize Deck](#initialize-deck)
+            * [Read Deck](#read-deck)
          * [Player](#player)
-            * [Ανάγνωση στοιχείων παίκτη](#ανάγνωση-στοιχείων-παίκτη)
+            * [Read Player Details](#read-player-details)
          * [Status](#status)
-            * [Ανάγνωση κατάστασης παιχνιδιού](#ανάγνωση-κατάστασης-παιχνιδιού)
+            * [Read Game Status](#read-game-status)
          * [Center Card](#center-card)
-            * [Αλλαγή κάρτας που υπάρχει στο κέντρο](#αλλαγή-κάρτας-που-υπάρχει-στο-κέντρο)
-            * [Ανάγνωση κάρτας που υπάρχει στο κέντρο](#ανάγνωση-κάρτας-που-υπάρχει-στο-κέντρο)
+            * [Change Center Card](#change-center-card)
+            * [Read Center Card](#read-center-card)
          * [Clean Center](#clean-center)
-            * [Καθαρισμός κάρτας κέντρου](#καθαρισμός-κάρτας-κέντρου)
+            * [Clear Center Card](#clear-center-card)
          * [Give Card](#give-card)
-            * [Καθορισμός νέας κάρτας παίκτη](#καθορισμός-νέας-κάρτας-παίκτη)
+            * [Set New Player Card](#set-new-player-card)
          * [Play Card](#play-card)
-            * [Μεταβολή κάρτας κέντρου](#μεταβολή-κάρτας-κέντρου)
+            * [Modify Center Card](#modify-center-card)
          * [Move](#move)
-            * [Παίξιμο-Υποβολή συνδυασμού](#παίξιμο-υποβολή-συνδυασμού)
+            * [Play-Submit Combination](#play-submit-combination)
       * [Entities](#entities)
          * [Deck](#deck-1)
          * [Player](#player)
-         * [Game_status](#game_status)
+         * [Game Status](#game_status)
 
 
-### :hammer_and_wrench: Languages and Tools Used for this project :
+### :hammer_and_wrench: Languages and Tools Used for This Project :
 
   <img src="https://github.com/devicons/devicon/blob/master/icons/php/php-original.svg" title="php" alt="php" width="40" height="40"/>&nbsp;&nbsp;
   <img src="https://github.com/devicons/devicon/blob/master/icons/mysql/mysql-original-wordmark.svg" title="mysql" alt="mysql" width="40" height="40"/>&nbsp;&nbsp;
@@ -52,18 +52,16 @@ Table of Contents
     <img src="https://github.com/devicons/devicon/blob/master/icons/git/git-original-wordmark.svg" title="git" alt="git" width="40" height="40"/>&nbsp;&nbsp;
     <img src="https://github.com/devicons/devicon/blob/master/icons/github/github-original-wordmark.svg" title="github" alt="github" width="40" height="40"/>&nbsp;&nbsp;
     <img src="https://github.com/devicons/devicon/blob/master/icons/vscode/vscode-original.svg" title="vscode" alt="vscode" width="40" height="40"/>&nbsp;&nbsp;
+    
+# Installation
 
-# Εγκατάσταση
+## Requirements
 
-## Απαιτήσεις
+- Apache2
+- MySQL Server
+- PHP
 
--  Apache2  
-
--  Mysql Server
-
--  php 
-
-## Οδηγίες Εγκατάστασης
+## Installation Instructions
 
 - Clone the game
 
@@ -71,11 +69,11 @@ Table of Contents
 $ git clone https://github.com/iee-ihu-gr-course1941/ADISE22_PINNACLE.git
 ```
 
-- Βεβαιωθείτε ότι ο φάκελος είναι προσβάσιμος από τον Apache Server. πιθανόν να χρειαστεί να καθορίσετε τις παρακάτω ρυθμίσεις.
+- Make sure the folder is accessible by the Apache Server. You may need to configure the following settings.
 
-- Θα πρέπει να δημιουργήσετε στην Mysql την βάση με όνομα 'pinnacle' και να φορτώσετε σε αυτήν την βάση τα δεδομένα από το αρχείο schema.sql
+- You need to create a MySQL database named 'pinnacle' and load the data from the schema.sql file into it.
 
-- Θα πρέπει να φτιάξετε το αρχείο lib/config_local.php το οποίο να περιέχει:
+- Create the file lib/config_local.php with the following content:
 
 ```
     <?php
@@ -83,25 +81,24 @@ $ git clone https://github.com/iee-ihu-gr-course1941/ADISE22_PINNACLE.git
 	$DB_USER = 'όνομα χρήστη';
     ?>
 ```
+# Game Description
 
-# Περιγραφή Παιχνιδιού
+## Pinnacle Gameplay:
 
-## Το Pinnacle παιζεται ως Εξής : 
+- Initially, 12 cards are dealt to each of the 2 players from the deck.
 
-- Αρχικά μοιράζονται και στους 2 παίκτες απο 12 φύλλα της τράπουλας.
+- Each player's goal is to create sets of 3 cards, 4 cards, etc., of the same rank and lay them down. For example, if a player has 3 cards of rank 9 (e.g., 9 diamonds, 9 spades, and 9 clubs), they can lay them down as combinations. Additionally, besides combinations of the same rank, a player can also create "kentas," which are sequences of consecutive cards of the same suit. For example, 2, 3, 4, 5, 6 of the same suit. Ultimately, each player aims to have no cards left in hand and to have the most combinations.
 
-- Κάθε παίκτης σκοπό έχει να δημιουργήσει 3άδες 4άδες κτλ από τα ίδια φύλλα και να τα κατεβάσει κάτω. Για παράδειγμα , εάν ένας παίκτης έχει 3 φύλλα του 9(π.χ. 9 diamonds , 9 spades και 9 clubs) μπορεί να τα κατεβάσει απο το χέρι του κάτω στους συνδυασμούς  του. Επίσης , εκτός απο συνδυασμούς ίδιου τύπου , ο παίκτης μπορεί να κάνει και κέντες ανάλογου τύπου. Κέντα είναι όταν υπάρχουν στην σειρά αριθμητικά φύλλα ίδιας φυγούρας. Για παράδειγμα 2,3,4,5,6 ίδιας φυγούρας φύλλου. Τέλος , βασικός στόχος κάθε παίκτη είναι να μείνει με κανένα φύλλο στο χέρι , και να έχει τους περισσότερους συνδυασμούς.
-
-- ### Οι κανόνες είναι :   
-    1. ο παίκτης μπορεί να παίξει μόνο εάν είναι η σείρα του.
+- ### The rules are:
+    1. A player can only play if it's their turn.
     
-    2. ο παίκτης αρχικά μπορεί να τραβήξει ένα φύλλο από την τράπουλα αν επιθυμεί και στην συνέχεια εάν έχει δημιουργήσει έναν συνδυασμό , να τον κατεβάσει και τέλος να παίξει ενα χαρτί στο κέντρο για να τελειώσει την σειρά του. 
+    2. Initially, a player can draw a card from the deck if desired. Then, if they have created a combination, they can lay it down. Finally, they can play a card in the center to end their turn.
 
-- ### Η βάση μας Κρατάει τους εξής πίνακες και στοιχεία :
-    - **Πίνακες που περιέχονται στην Βάση :**  
-        > ο πίνακας Players περιέχει τα στοιχεία των παικτών.
-        
-        <table>
+- ### Our database holds the following tables and elements:
+ - **Tables included in the Database :**  
+        > The Players table contains players' information.
+   
+       <table>
         <tr>
         <th>Players</th>
         </tr>
@@ -163,89 +160,89 @@ $ git clone https://github.com/iee-ihu-gr-course1941/ADISE22_PINNACLE.git
 
         </td>
         </tr></table>
-        
-- ### Η εφαρμογή απαπτύχθηκε μέχρι το σημείο όπου :   
-   - Ο παίκτης μπορεί να παίξει ένα φύλλο στο κέντρο.
-   - Να τραβήξει ένα φύλλο από την τράπουλα.
-   - Να παίξει συνδυασμούς.
-- ### Δεν υλοποιήθηκε :
-   - Ο παίκτης να παίρνει ένα φύλλο από το κέντρο.
-   - Ο παίκτης να κολλάει φύλλα στους ήδη υπάρχοντες συνδυασμούς του.
-   - Το score των παικτών.
-   - Πολλαπλοί γύροι παιχνιδιού. 
-# Συντελεστές 
+- ### The application has been developed up to the point where:
+   - The player can play a card in the center.
+   - The player can draw a card from the deck.
+   - The player can play combinations.
 
-Ομάδα 2 ατόμων : 
+- ### Not implemented:
+   - The player taking a card from the center.
+   - The player melding cards into existing combinations.
+   - Players' scores.
+   - Multiple rounds of the game.
+   
+# Contributors
 
-1.  **Βασίλης Δραμιτινός**
-2.  **Θοδωρής Κορδατζάκης**
+Team of 2 individuals:
 
-Aρμοδιότητες ομάδας :
+1.  **Vasilis Dramitinos**
+2.  **Thodoris Kordatzakis**
 
-- **Βασίλης Δραμιτινός** : Σχεδιασμός mysql , Υλοποίηση Βάσης , Υλοποίηση sql procedures , Υλοποίηση php API ,  JQuery , javascript.
+Team Responsibilities:
 
-- **Θοδωρής Κορδατζάκης** : Υλοποίηση html Page , Υλοποίηση php API , Bootstrap , javascript , JQuery , debugging , Υλοποίηση sql procedures.
-        
+- **Vasilis Dramitinos** : MySQL Design , Database Implementation , Implementation of SQL Procedures , Implementation of PHP API , jQuery , Javascript
+- **Thodoris Kordatzakis** : Implementation of HTML Pages , Implementation of PHP API , JavaScript ,jQuery , Debugging , Implementation of SQL Procedures , Bootstrap
 
 
-# Περιγραφή API
+
+# API Description
 
 ## Methods
 
 ### Deck
 
-#### **Αρχικοποίηση Deck**
+#### **Initialize Deck**
 
 ```
 POST /deck/
 ```
-Αρχικοποιεί το deck με θέσεις NULL. Δηλαδή γίνεται reset η τράπουλα. Επιστρέφει ολα τα στοιχεία του πίνακα deck.
+Initializes the deck with NULL positions, essentially resetting the deck. Returns all elements of the deck table.
 
-#### **Ανάγνωση Deck**
+#### **Read Deck**
 
 ```
 GET /deck/:x/
 ```
-Επιστρέφει τα φύλλα του παίκτη x.
+Returns the cards of player x.
 
-- Json data :
+- JSON data:
 
-    | Field             | Description                    | 
-    | ----------------- | ------------------------------ | 
-    | `number`          | το number φύλλου του παίκτη x. |
-    | `shape`           | το shape φύλλου του παίκτη x.  |
+    | Field             | Description                 | 
+    | ----------------- | --------------------------- | 
+    | `number`          | player x's card number.     |
+    | `shape`           | player x's card shape.      |
 
 
 ### Player
 
-#### **Ανάγνωση στοιχείων παίκτη**
+#### **Read Player Details**
 
 ```
 GET /player/:p
 ```
-Επιστρέφει τα στοιχεία του παίκτη p ή αν παραληφθεί εμφανίζεται error message.Το p μπορεί να είναι 1 ή 2.
+Returns the details of player p or displays an error message if not provided. p can be 1 or 2.
 
-- Json data :
+- JSON data:
 
-    | Field               | Description                    | 
-    | ------------------- | ------------------------------ | 
-    | `username`          | το username του παίκτη p.      |
-    | `id`                | το id του παίκτη p.            |
+    | Field               | Description             | 
+    | ------------------- | ----------------------- | 
+    | `username`          | player p's username.    |
+    | `id`                | player p's id.          |
 
-#### **Επαναφορά Κατάστασης παιχνιδιού και παικτών**
+#### **Reset Game State and Players**
 
 ```
 POST /player/
 ```
-Επαναφέρει την κατασταση παιχνιδιού σε NULL και επίσης επαναφέρει τους παίκτες(τα 'username' τους) σε NULL.
+Resets the game state to NULL and also resets the players (their 'username') to NULL.
 
-#### **Αρχικοποίηση παίκτη**
+#### **Initialize Player**
 
 ```
 PUT /player/:p
 ```
 
-Αρχικοποιεί έναν παίκτη p ή εαν παραληφθεί εμφανίζεται error message. To p μπορεί να ειναι 1 ή 2. Επιστρέφει ολα τα στοιχεία του p. Εάν έχει μπει ένας παίκτης το game_status γίνεται 'initialized' , εάν έχουν μπει 2 παίκτης γίνεται 'started' και εάν δεν υπάρχουν παίκτες είναι 'not active'. 
+Initializes a player p or displays an error message if not provided. p can be 1 or 2. Returns all details of p. If a player has entered, the game_status becomes 'initialized'; if two players have entered, it becomes 'started'; and if there are no players, it is 'not active'.
 
 - Json data :
 
@@ -258,28 +255,29 @@ PUT /player/:p
 
 ### Status
 
-#### **Ανάγνωση κατάστασης παιχνιδιού**
+#### **Read Game Status**
 
 ```
 GET /status/
 ```
-Επιστρέφει όλα τα στοιχεία του πίνακα game_status.
+Returns all elements of the game_status table.
 
-#### **Καθορισμός αποτελέσματος παιχνιδιού**
+#### **Set Game Result**
 
 ```
 POST /status/
 ```
-Καθορίζει το το αποτέλεσμα του παιχνιδιού , ανάλογα το τελευταίο φύλλο που θα παιχτεί απο κάποιον παίκτη.
+Sets the game result based on the last card played by a player.
 
 ### Center Card
 
-#### **Αλλαγή κάρτας που υπάρχει στο κέντρο**
+#### **Change Center Card**
 
 ```
 GET /center/
 ```
-Αλλάζει μια τυχαία κάρτα που υπάρχει στον πίκανα deck σε 'location' = center και επιστρέφει το 'number' και το 'shape' της κάρτας αυτής.
+
+Changes a random card in the deck table with 'location' = center and returns the 'number' and 'shape' of that card.
 
 - Json data :
 
@@ -288,12 +286,12 @@ GET /center/
     | `number`            | το number με location='center'. |
     | `shape`             | το shape με location='center'.  |
 
-#### **Ανάγνωση κάρτας που υπάρχει στο κέντρο**
+#### **Read Center Card**
 
 ```
 POST /center/
 ```
-Επιστρέφει την κάρτα που υπάρχει στον πίνακα deck σε 'location' = center.
+Returns the card in the deck table with 'location' = center.
 
 - Json data :
 
@@ -304,35 +302,35 @@ POST /center/
 
 ### Clean Center
 
-#### **Καθαρισμός κάρτας κέντρου** 
+#### **Clean Center Card** 
 
 ```
 POST /clean_center/
 ```
-Αλλαγή υπάρχων κάρτας που υπάρχει στο κέντρο σε NULL.
+Changes the existing center card to NULL.
 
 ### Give Card
 
-#### **Καθορισμός νέας κάρτας παίκτη**
+#### **Assign New Player Card**
 
 ```
 POST /give_card/
 ```
-Προσθήκη μιας τυχαίας κάρτας απο 'location'=pile , στο χέρι του παίκτη.
+Adds a random card from 'location' = pile to the player's hand.
 
 ### Play Card
 
-#### **Μεταβολή κάρτας κέντρου** 
+#### **Change Center Card** 
 
 ```
 PUT /playcard/:n/:s/
 ```
 
-Μεταβάλλει την επιλεγμένη κάρτα παίκτη σε 'location'=center.
+Changes the selected player card to 'location' = center.
 
 ### Move
 
-#### **Παίξιμο-Υποβολή συνδυασμού**
+#### **Play-Submit Combination**
 
 ```
 PUT /move/:n1/:s1/:n2/:s2/:n3/:s3/
@@ -343,7 +341,7 @@ PUT /move/:n1/:s1/:n2/:s2/:n3/:s3/:n4/:s4/:n5/:s5
 or 
 PUT /move/:n1/:s1/:n2/:s2/:n3/:s3/:n4/:s4/:n5/:s5/:n6/:s6
 ```
-Υποβάλλει έναν συνδυασμο απο τους παραπάνω επιτρεπτούς συνδυασμούς , δηλαδή απο 3 έως 6 φύλλα(n(i),s(i) αντιπροσωπεύει ένα φύλλο). Επιστρέφει όλα τα στοιχεία φύλλων που μόλις υποβλήθηκαν για συνδυασμό.
+Submits a combination from the permitted combinations above, ranging from 3 to 6 cards (n(i),s(i) represents a card). Returns all card details that were just submitted for the combination.
 
 - Json data :
 
@@ -358,34 +356,34 @@ PUT /move/:n1/:s1/:n2/:s2/:n3/:s3/:n4/:s4/:n5/:s5/:n6/:s6
 ### Deck
 ---------
 
-Το deck είναι ένας πίνακας, ο οποίος στο κάθε στοιχείο έχει τα παρακάτω:
+The deck is an array, where each element has the following:
 
 | Attribute                | Description                                  | Values                              |
 | ------------------------ | -------------------------------------------- | ----------------------------------- |
-| `number`                 | H συντεταγμένη αριθμός του φύλλου            | 1..10,J,Q,K,A                       |
-| `shape`                  | H συντεταγμένη σχήμα του φύλλου              | String                              |
-| `location`               | Η θέση του φύλλου                            | String                              |
+| `number`                 | The numeric value of the card                | 1..10, J, Q, K, A                   |
+| `shape`                  | The shape of the card                        | String                              |
+| `location`               | The location of the card                     | String                              |
 
 ### Player
 ---------
 
-O κάθε παίκτης έχει τα παρακάτω στοιχεία:
+Each player has the following attributes:
 
-| Attribute                | Description                                                 | Values                              |
-| ------------------------ | ----------------------------------------------------------- | ----------------------------------- |
-| `username`               | όνομα παίκτη                                                | String                              |
-| `id`                     | το id του παίκτη                                            | Int                                 |
-| `token`                  | To κρυφό token του παίκτη                                   | String                              |
-| `last action`            | η τελευταία χρονική στιγμή που έκανε μια ενέργεια ο παίκτης | TIMESTAMP                           |
+| Attribute                | Description                                  | Values                              |
+| ------------------------ | -------------------------------------------- | ----------------------------------- |
+| `username`               | Player's username                            | String                              |
+| `id`                     | Player's id                                  | Int                                 |
+| `token`                  | Player's hidden token                        | String                              |
+| `last action`            | The timestamp of the player's last action    | TIMESTAMP                           |
 
 ### Game_Status
 ---------
 
-H κατάσταση παιχνιδιού έχει τα παρακάτω στοιχεία:
+The game status has the following attributes:
 
-| Attribute                | Description                                 | Values                                                    |
-| ------------------------ | ------------------------------------------- | --------------------------------------------------------- |
-| `status`                 | κατάσταση                                   |'not active', 'initialized', 'started', 'ended', 'aborded' |
-| `p_turn`                 | το φύλλο που παίζει ο παίκτης               | 'player 1', 'player 2'                                    |
-| `result`                 | To κρυφό token του παίκτη                   | 'player 1', 'player 2','draw'                             |
-| `last_change`            | τελευταία χρονική στιγμλη έγινε μια ενέργεια | TIMESTAMP                               |
+| Attribute                | Description                                  | Values                                                    |
+| ------------------------ | -------------------------------------------- | --------------------------------------------------------- |
+| `status`                 | The game status                              | 'not active', 'initialized', 'started', 'ended', 'aborted'|
+| `p_turn`                 | The player currently playing                 | 'player 1', 'player 2'                                    |
+| `result`                 | The result of the game                       | 'player 1', 'player 2', 'draw'                            |
+| `last_change`            | Timestamp of the last action                 | TIMESTAMP                                                |
