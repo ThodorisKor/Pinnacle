@@ -2,6 +2,9 @@
 
 Pinnacle παιχνίδι 2 ατόμων μέσα απο τον browser. 
 
+[![English](https://img.shields.io/badge/language-English-blue)](README.md)
+[![Ελληνικά](https://img.shields.io/badge/language-%CE%95%CE%BB%CE%BB%CE%B7%CE%BD%CE%B9%CE%BA%CE%AC-green)](README_GR.md)
+
 ## Demo game
 
  - Mπορείτε να βρείτε το demo στο link -> https://users.iee.ihu.gr/~it185430/ADISE22_PINNACLE/www/index.html
