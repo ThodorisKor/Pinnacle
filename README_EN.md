@@ -246,10 +246,10 @@ Initializes a player p or displays an error message if not provided. p can be 1 
 
     | Field               | Description                                                    | 
     | ------------------- | -------------------------------------------------------------- | 
-    | `username`          | το username του παίκτη p.                                      |
-    | `id`                | το id του παίκτη p.                                            |    
-    | `token`             | To κρυφό token του παίκτη p.
-    | `last action`       | η τελευταία χρονική στιγμή που έκανε μια ενέργεια ο παίκτης p. |
+    | `username`          | The username of player p.                                      |
+    | `id`                | The ID of player p.                                            |    
+    | `token`             | The secret token of player p.
+    | `last action`       | The last timestamp when player p performed an action. 	   |
 
 ### Status
 
@@ -279,10 +279,10 @@ Changes a random card in the deck table with 'location' = center and returns the
 
 - Json data :
 
-    | Field               | Description                     | 
-    | ------------------- | ------------------------------- | 
-    | `number`            | το number με location='center'. |
-    | `shape`             | το shape με location='center'.  |
+    | Field               | Description                     	      | 
+    | ------------------- | ----------------------------------------- | 
+    | `number`            | The number with location set to 'center'. |
+    | `shape`             | The shape with location set to 'center'.  |
 
 #### **Read Center Card**
 
@@ -293,10 +293,10 @@ Returns the card in the deck table with 'location' = center.
 
 - Json data :
 
-    | Field               | Description                     | 
-    | ------------------- | ------------------------------- | 
-    | `number`            | το number με location='center'. |
-    | `shape`             | το shape με location='center'.  |
+    | Field               | Description                     		       |	 		
+    | ------------------- | -------------------------------------------------- | 
+    | `number`            | The number with location set to location='center'. |
+    | `shape`             | The shape with location set to location='center'.  |
 
 ### Clean Center
 
@@ -343,11 +343,11 @@ Submits a combination from the permitted combinations above, ranging from 3 to 6
 
 - Json data :
 
-    | Field             | Description                    | 
-    | ----------------- | ------------------------------ | 
-    | `number`          | το number φύλλου n(i).         |
-    | `shape`           | το shape φύλλου s(i).          |
-    | `location`        | το location είτε "triada combination ".$turn['p_turn']"(με $turn του παίκτη που έκανε τον συνδυασμό) ή "kenta combination ".$turn['p_turn']"(με $turn του παίκτη που έκανε τον συνδυασμό). |
+    | Field             | Description--                    | 
+    | ----------------- | -------------------------------- | 
+    | `number`          | The number of card n(i).         |
+    | `shape`           | The shape of card s(i).          |
+    | `location`        | The location is either "triada combination " followed by $turn['p_turn'] (with $turn being the player's turn who made the combination) or "kenta combination " followed by $turn['p_turn'] (with $turn being the player's turn who made the combination). |
 
 ## Entities
 
